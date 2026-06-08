@@ -1,56 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
+import seedData from "./data/seedData";
 
-const STORAGE_KEY = "avaRinCollectionManager.react.v0.2";
-
-const defaultData = {
-  categories: [
-    {
-      id: "cat-line",
-      name: "LINE 貼圖",
-      description: "Ava_凜 LINE 貼圖系列，依照系列整理單張貼圖。",
-    },
-    {
-      id: "cat-goods",
-      name: "周邊",
-      description: "公仔、座布團、角色小卡、展示配件等周邊作品。",
-    },
-  ],
-  series: [
-    {
-      id: "series-work-1",
-      categoryId: "cat-line",
-      name: "Ava_凜 工作篇 1",
-      description:
-        "工作情境貼圖，包含加班中、開工啦、收到、馬上處理、會議中、下班啦。",
-    },
-    {
-      id: "series-daily-1",
-      categoryId: "cat-line",
-      name: "Ava_凜 日常生活篇 1",
-      description:
-        "日常聊天常用貼圖，包含哈囉、謝謝、晚安、收到、愛你喔。",
-    },
-    {
-      id: "series-zodiac-1",
-      categoryId: "cat-line",
-      name: "Ava_凜 十二生肖篇 1",
-      description: "生肖祝福貼圖，後續重點是讓每張風格差異更明顯。",
-    },
-  ],
-  items: [
-    {
-      id: "item-sample-1",
-      categoryId: "cat-line",
-      seriesId: "series-work-1",
-      title: "加班中",
-      displayText: "加班中",
-      status: "完成",
-      image: "",
-      notes: "先放範例資料。之後可以把真正的加班中圖片上傳進來。",
-    },
-  ],
-};
+const STORAGE_KEY = "avaRinCollectionManager.react.admin.v0.4";
 
 function uid(prefix) {
   return `${prefix}-${Date.now().toString(36)}-${Math.random()
@@ -58,12 +10,16 @@ function uid(prefix) {
     .slice(2, 8)}`;
 }
 
-function loadData() {
+function loadData(isAdmin) {
+  if (!isAdmin) {
+    return seedData;
+  }
+
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : defaultData;
+    return saved ? JSON.parse(saved) : seedData;
   } catch {
-    return defaultData;
+    return seedData;
   }
 }
 
@@ -73,7 +29,7 @@ function saveData(data) {
   } catch (error) {
     console.error("儲存失敗：", error);
     alert(
-      "圖片太大或太多，瀏覽器 localStorage 存不下。建議先少量測試，之後我們再改成正式資料庫或圖片檔案管理。"
+      "圖片太大或太多，瀏覽器 localStorage 存不下。公開展示建議使用 public/images + seedData.js。"
     );
   }
 }
@@ -131,9 +87,13 @@ export default function App() {
   const isAdmin =
     new URLSearchParams(window.location.search).get("admin") === "1";
 
-  const [data, setData] = useState(loadData);
-  const [selectedCategoryId, setSelectedCategoryId] = useState("cat-line");
-  const [selectedSeriesId, setSelectedSeriesId] = useState("series-work-1");
+  const [data, setData] = useState(() => loadData(isAdmin));
+  const [selectedCategoryId, setSelectedCategoryId] = useState(
+    seedData.categories?.[0]?.id || ""
+  );
+  const [selectedSeriesId, setSelectedSeriesId] = useState(
+    seedData.series?.[0]?.id || ""
+  );
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("全部");
   const [modal, setModal] = useState(null);
@@ -141,8 +101,10 @@ export default function App() {
   const [editingItem, setEditingItem] = useState(null);
 
   useEffect(() => {
-    saveData(data);
-  }, [data]);
+    if (isAdmin) {
+      saveData(data);
+    }
+  }, [data, isAdmin]);
 
   const selectedCategory = data.categories.find(
     (category) => category.id === selectedCategoryId
@@ -169,6 +131,17 @@ export default function App() {
 
   function updateData(nextData) {
     setData(nextData);
+  }
+
+  function resetToSeedData() {
+    updateData(seedData);
+    setSelectedCategoryId(seedData.categories?.[0]?.id || "");
+    setSelectedSeriesId(seedData.series?.[0]?.id || "");
+    setSearch("");
+    setStatusFilter("全部");
+    setModal(null);
+    setDetailItem(null);
+    setEditingItem(null);
   }
 
   function addCategory(event) {
@@ -425,15 +398,6 @@ export default function App() {
     event.target.value = "";
   }
 
-  function resetDemo() {
-    const ok = confirm("確定重置成範例資料嗎？目前資料會被覆蓋。");
-    if (!ok) return;
-
-    updateData(defaultData);
-    setSelectedCategoryId("cat-line");
-    setSelectedSeriesId("series-work-1");
-  }
-
   function clearAll() {
     const ok = confirm("確定清空全部資料嗎？建議先匯出 JSON 備份。");
     if (!ok) return;
@@ -460,7 +424,7 @@ export default function App() {
           <div className="brandMark">凜</div>
           <div>
             <h1>Ava_凜 作品庫</h1>
-            <p>{isAdmin ? "Admin Mode v0.3" : "Gallery Mode v0.3"}</p>
+            <p>{isAdmin ? "Admin Mode v0.4" : "Gallery Mode v0.4"}</p>
           </div>
         </div>
 
@@ -549,8 +513,8 @@ export default function App() {
             <>
               <strong>管理模式</strong>
               <p>
-                目前資料存在瀏覽器。換電腦或清除瀏覽器前，記得先匯出
-                JSON。
+                這裡是本機管理用。公開展示建議使用 public/images +
+                seedData.js。
               </p>
             </>
           ) : (
@@ -575,8 +539,8 @@ export default function App() {
 
           {isAdmin && (
             <div className="topActions">
-              <button className="ghost" onClick={resetDemo}>
-                重置範例
+              <button className="ghost" onClick={resetToSeedData}>
+                讀取公開資料
               </button>
               <button className="danger" onClick={clearAll}>
                 清空資料
@@ -634,7 +598,7 @@ export default function App() {
               <h4>目前沒有作品</h4>
               <p>
                 {isAdmin
-                  ? "點右上角「＋ 新增貼圖」，可以一次選多張圖片。"
+                  ? "可用「讀取公開資料」載入 seedData，或點右上角新增作品。"
                   : "這個分類或系列目前還沒有公開作品。"}
               </p>
             </div>
