@@ -128,6 +128,9 @@ function cleanFileName(name) {
 }
 
 export default function App() {
+  const isAdmin =
+    new URLSearchParams(window.location.search).get("admin") === "1";
+
   const [data, setData] = useState(loadData);
   const [selectedCategoryId, setSelectedCategoryId] = useState("cat-line");
   const [selectedSeriesId, setSelectedSeriesId] = useState("series-work-1");
@@ -153,8 +156,10 @@ export default function App() {
     return data.items.filter((item) => {
       const matchCategory =
         !selectedCategoryId || item.categoryId === selectedCategoryId;
-      const matchSeries = !selectedSeriesId || item.seriesId === selectedSeriesId;
-      const matchStatus = statusFilter === "全部" || item.status === statusFilter;
+      const matchSeries =
+        !selectedSeriesId || item.seriesId === selectedSeriesId;
+      const matchStatus =
+        statusFilter === "全部" || item.status === statusFilter;
       const keyword = `${item.title} ${item.displayText} ${item.notes}`.toLowerCase();
       const matchSearch = !search || keyword.includes(search.toLowerCase());
 
@@ -455,26 +460,36 @@ export default function App() {
           <div className="brandMark">凜</div>
           <div>
             <h1>Ava_凜 作品庫</h1>
-            <p>React Manager v0.2</p>
+            <p>{isAdmin ? "Admin Mode v0.3" : "Gallery Mode v0.3"}</p>
           </div>
         </div>
 
-        <div className="sideActions">
-          <button onClick={() => setModal("category")}>＋ 新增主分類</button>
-          <button onClick={exportJson} className="ghost">
-            匯出 JSON
-          </button>
-          <label className="ghost fileLabel">
-            匯入 JSON
-            <input type="file" accept="application/json" onChange={importJson} />
-          </label>
-        </div>
+        {isAdmin && (
+          <div className="sideActions">
+            <button onClick={() => setModal("category")}>＋ 新增主分類</button>
+            <button onClick={exportJson} className="ghost">
+              匯出 JSON
+            </button>
+            <label className="ghost fileLabel">
+              匯入 JSON
+              <input
+                type="file"
+                accept="application/json"
+                onChange={importJson}
+              />
+            </label>
+          </div>
+        )}
 
         <nav className="tree">
           {data.categories.length === 0 ? (
             <div className="note">
               <strong>尚未建立分類</strong>
-              <p>請先點「＋ 新增主分類」。</p>
+              <p>
+                {isAdmin
+                  ? "請先點「＋ 新增主分類」。"
+                  : "目前還沒有公開分類。"}
+              </p>
             </div>
           ) : (
             data.categories.map((category) => {
@@ -530,25 +545,44 @@ export default function App() {
         </nav>
 
         <div className="note">
-          <strong>目前資料存在瀏覽器</strong>
-          <p>換電腦或清除瀏覽器前，記得先匯出 JSON。</p>
+          {isAdmin ? (
+            <>
+              <strong>管理模式</strong>
+              <p>
+                目前資料存在瀏覽器。換電腦或清除瀏覽器前，記得先匯出
+                JSON。
+              </p>
+            </>
+          ) : (
+            <>
+              <strong>展示模式</strong>
+              <p>此頁只顯示作品，不顯示新增、編輯、刪除按鈕。</p>
+            </>
+          )}
         </div>
       </aside>
 
       <main className="main">
         <header className="topbar">
           <div>
-            <p className="eyebrow">Editable Website Prototype</p>
+            <p className="eyebrow">
+              {isAdmin
+                ? "Editable Website Prototype"
+                : "Ava_凜 Works Gallery"}
+            </p>
             <h2>分類 ＞ 系列 ＞ 貼圖作品</h2>
           </div>
-          <div className="topActions">
-            <button className="ghost" onClick={resetDemo}>
-              重置範例
-            </button>
-            <button className="danger" onClick={clearAll}>
-              清空資料
-            </button>
-          </div>
+
+          {isAdmin && (
+            <div className="topActions">
+              <button className="ghost" onClick={resetDemo}>
+                重置範例
+              </button>
+              <button className="danger" onClick={clearAll}>
+                清空資料
+              </button>
+            </div>
+          )}
         </header>
 
         <section className="hero">
@@ -563,13 +597,16 @@ export default function App() {
             <p>
               {selectedSeries?.description ||
                 selectedCategory?.description ||
-                "請先新增分類、系列與作品。"}
+                "目前尚未建立分類、系列與作品。"}
             </p>
           </div>
-          <div className="quickActions">
-            <button onClick={() => setModal("series")}>＋ 新增系列</button>
-            <button onClick={() => setModal("item")}>＋ 新增貼圖</button>
-          </div>
+
+          {isAdmin && (
+            <div className="quickActions">
+              <button onClick={() => setModal("series")}>＋ 新增系列</button>
+              <button onClick={() => setModal("item")}>＋ 新增貼圖</button>
+            </div>
+          )}
         </section>
 
         <section className="toolbar">
@@ -595,7 +632,11 @@ export default function App() {
           {visibleItems.length === 0 ? (
             <div className="emptyCard">
               <h4>目前沒有作品</h4>
-              <p>點右上角「＋ 新增貼圖」，可以一次選多張圖片。</p>
+              <p>
+                {isAdmin
+                  ? "點右上角「＋ 新增貼圖」，可以一次選多張圖片。"
+                  : "這個分類或系列目前還沒有公開作品。"}
+              </p>
             </div>
           ) : (
             visibleItems.map((item) => (
@@ -628,18 +669,23 @@ export default function App() {
                     >
                       查看
                     </button>
-                    <button
-                      className="ghost small"
-                      onClick={() => setEditingItem(item)}
-                    >
-                      編輯
-                    </button>
-                    <button
-                      className="danger small"
-                      onClick={() => deleteItem(item.id)}
-                    >
-                      刪除
-                    </button>
+
+                    {isAdmin && (
+                      <>
+                        <button
+                          className="ghost small"
+                          onClick={() => setEditingItem(item)}
+                        >
+                          編輯
+                        </button>
+                        <button
+                          className="danger small"
+                          onClick={() => deleteItem(item.id)}
+                        >
+                          刪除
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               </article>
@@ -648,7 +694,7 @@ export default function App() {
         </section>
       </main>
 
-      {modal === "category" && (
+      {isAdmin && modal === "category" && (
         <Modal title="新增主分類" onClose={() => setModal(null)}>
           <form onSubmit={addCategory}>
             <label>
@@ -672,7 +718,7 @@ export default function App() {
         </Modal>
       )}
 
-      {modal === "series" && (
+      {isAdmin && modal === "series" && (
         <Modal title="新增系列" onClose={() => setModal(null)}>
           <form onSubmit={addSeries}>
             <label>
@@ -706,7 +752,7 @@ export default function App() {
         </Modal>
       )}
 
-      {modal === "item" && (
+      {isAdmin && modal === "item" && (
         <AddItemModal
           data={data}
           selectedCategoryId={selectedCategoryId}
@@ -716,7 +762,7 @@ export default function App() {
         />
       )}
 
-      {editingItem && (
+      {isAdmin && editingItem && (
         <EditItemModal
           data={data}
           editingItem={editingItem}
@@ -766,18 +812,24 @@ function AddItemModal({
   const initialCategoryId = selectedCategoryId || firstCategoryId;
 
   const [categoryId, setCategoryId] = useState(initialCategoryId);
+  const [seriesId, setSeriesId] = useState("");
 
-  const seriesList = data.series.filter(
-    (series) => series.categoryId === categoryId
-  );
+  const seriesList = useMemo(() => {
+    return data.series.filter((series) => series.categoryId === categoryId);
+  }, [data.series, categoryId]);
 
-  const validSelectedSeries = seriesList.some(
-    (series) => series.id === selectedSeriesId
-  );
+  useEffect(() => {
+    const validSelectedSeries = seriesList.some(
+      (series) => series.id === selectedSeriesId
+    );
 
-  const defaultSeriesId = validSelectedSeries
-    ? selectedSeriesId
-    : seriesList[0]?.id || "";
+    if (validSelectedSeries) {
+      setSeriesId(selectedSeriesId);
+      return;
+    }
+
+    setSeriesId(seriesList[0]?.id || "");
+  }, [selectedSeriesId, seriesList]);
 
   return (
     <Modal title="新增貼圖 / 作品" onClose={onClose}>
@@ -790,17 +842,25 @@ function AddItemModal({
               value={categoryId}
               onChange={(event) => setCategoryId(event.target.value)}
             >
-              {data.categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              ))}
+              {data.categories.length === 0 ? (
+                <option value="">請先新增主分類</option>
+              ) : (
+                data.categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))
+              )}
             </select>
           </label>
 
           <label>
             所屬系列
-            <select name="seriesId" defaultValue={defaultSeriesId}>
+            <select
+              name="seriesId"
+              value={seriesId}
+              onChange={(event) => setSeriesId(event.target.value)}
+            >
               {seriesList.length === 0 ? (
                 <option value="">請先新增系列</option>
               ) : (
@@ -877,17 +937,21 @@ function EditItemModal({ data, editingItem, onClose, onSubmit }) {
         <label>
           所屬系列
           <select name="seriesId" defaultValue={editingItem.seriesId}>
-            {data.series.map((series) => {
-              const category = data.categories.find(
-                (entry) => entry.id === series.categoryId
-              );
+            {data.series.length === 0 ? (
+              <option value="">請先新增系列</option>
+            ) : (
+              data.series.map((series) => {
+                const category = data.categories.find(
+                  (entry) => entry.id === series.categoryId
+                );
 
-              return (
-                <option key={series.id} value={series.id}>
-                  {category?.name || "未分類"} ＞ {series.name}
-                </option>
-              );
-            })}
+                return (
+                  <option key={series.id} value={series.id}>
+                    {category?.name || "未分類"} ＞ {series.name}
+                  </option>
+                );
+              })
+            )}
           </select>
         </label>
 
