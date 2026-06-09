@@ -607,7 +607,12 @@ export default function App() {
               <article className="card" key={item.id}>
                 <div className="imageBox">
                   {item.image ? (
-                    <img src={item.image} alt={item.title} />
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      draggable="false"
+                      onContextMenu={(event) => event.preventDefault()}
+                    />
                   ) : (
                     <div className="placeholder">凜</div>
                   )}
@@ -740,7 +745,12 @@ export default function App() {
           <div className="detail">
             <div className="detailImage">
               {detailItem.image ? (
-                <img src={detailItem.image} alt={detailItem.title} />
+                <img
+                  src={detailItem.image}
+                  alt={detailItem.title}
+                  draggable="false"
+                  onContextMenu={(event) => event.preventDefault()}
+                />
               ) : (
                 <div className="placeholder">凜</div>
               )}
