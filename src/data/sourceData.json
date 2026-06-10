@@ -28,9 +28,126 @@
       "name": "Ava_凜 直播中篇 1",
       "slug": "Ava_凜-直播中篇-1",
       "description": ""
+    },
+    {
+      "id": "series-mq7qd9sr-nggvb0",
+      "categoryId": "cat-line",
+      "name": "Ava_凜 穿搭篇 1",
+      "slug": "Ava_凜-穿搭篇-1",
+      "description": ""
     }
   ],
   "items": [
+    {
+      "id": "item-mq7qehpp-vu2px5",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "00 首圖｜Ava 凜 穿搭篇 1",
+      "displayText": "00 首圖｜Ava 凜 穿搭篇 1",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/00-首圖｜Ava-凜-穿搭篇-1.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpq-5xldpa",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "01 哈囉",
+      "displayText": "01 哈囉",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/01-哈囉.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpr-35aql2",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "02 謝謝你",
+      "displayText": "02 謝謝你",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/02-謝謝你.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpt-el9ens",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "03 辛苦了",
+      "displayText": "03 辛苦了",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/03-辛苦了.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpu-1g0bip",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "04 OK！",
+      "displayText": "04 OK！",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/04-OK！.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpv-w0f3fn",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "05 太好了！｜新版",
+      "displayText": "05 太好了！｜新版",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/05-太好了！｜新版.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpw-zv0p4y",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "06 抱歉啦",
+      "displayText": "06 抱歉啦",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/06-抱歉啦.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpw-0qpx9z",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "07 加油！",
+      "displayText": "07 加油！",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/07-加油！.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpx-ewz3mh",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "08 哼！",
+      "displayText": "08 哼！",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/08-哼！.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpy-vvtviy",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "09 累了",
+      "displayText": "09 累了",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/09-累了.png",
+      "notes": ""
+    },
+    {
+      "id": "item-mq7qehpz-6x3dnh",
+      "categoryId": "cat-line",
+      "seriesId": "series-mq7qd9sr-nggvb0",
+      "title": "10 晚安",
+      "displayText": "10 晚安",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-穿搭篇-1/10-晚安.png",
+      "notes": ""
+    },
     {
       "id": "item-mq7kxhtw-mss5dh",
       "categoryId": "cat-line",
