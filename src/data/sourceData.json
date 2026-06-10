@@ -1,4 +1,4 @@
-const seedData = {
+{
   "categories": [
     {
       "id": "cat-line",
@@ -188,6 +188,4 @@ const seedData = {
       "notes": "Ava_凜 工作篇 1。"
     }
   ]
-};
-
-export default seedData;
+}

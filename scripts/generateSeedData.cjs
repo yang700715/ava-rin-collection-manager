@@ -3,84 +3,102 @@ const path = require("path");
 
 const projectRoot = process.cwd();
 
-const imageFolder = path.join(
-  projectRoot,
-  "public",
-  "images",
+const dataFolder = path.join(projectRoot, "src", "data");
+const sourceFile = path.join(dataFolder, "sourceData.json");
+const seedFile = path.join(dataFolder, "seedData.js");
+
+const publicImagesRoot = path.join(projectRoot, "public", "images");
+const fallbackFolder = path.join(
+  publicImagesRoot,
   "line-stickers",
   "ava-rin-work-1"
 );
 
-const outputFolder = path.join(projectRoot, "src", "data");
-const outputFile = path.join(outputFolder, "seedData.js");
+const allowedExts = [".png", ".jpg", ".jpeg", ".webp", ".gif"];
 
-const allowedExts = [".png", ".jpg", ".jpeg", ".webp"];
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
+}
 
-function titleFromFileName(fileName) {
+function fileTitle(fileName) {
   return path
     .basename(fileName, path.extname(fileName))
     .replace(/[_-]+/g, " ")
     .trim();
 }
 
-if (!fs.existsSync(imageFolder)) {
-  console.error("找不到圖片資料夾：");
-  console.error(imageFolder);
-  process.exit(1);
-}
+function buildDefaultSourceData() {
+  ensureDir(fallbackFolder);
 
-const files = fs
-  .readdirSync(imageFolder)
-  .filter((file) => allowedExts.includes(path.extname(file).toLowerCase()))
-  .sort((a, b) => a.localeCompare(b, "zh-Hant"));
-
-const items = files.map((file, index) => {
-  const title = titleFromFileName(file);
+  const files = fs
+    .readdirSync(fallbackFolder)
+    .filter((file) => allowedExts.includes(path.extname(file).toLowerCase()))
+    .sort((a, b) => a.localeCompare(b, "zh-Hant"));
 
   return {
-    id: `ava-rin-work-1-${String(index + 1).padStart(3, "0")}`,
-    categoryId: "cat-line",
-    seriesId: "series-work-1",
-    title,
-    displayText: title,
-    status: "完成",
-    image: `/images/line-stickers/ava-rin-work-1/${file}`,
-    notes: "Ava_凜 工作篇 1。",
+    categories: [
+      {
+        id: "cat-line",
+        name: "LINE 貼圖",
+        slug: "line-stickers",
+        description: "Ava_凜 LINE 貼圖系列，依照系列整理單張貼圖。",
+      },
+    ],
+    series: [
+      {
+        id: "series-work-1",
+        categoryId: "cat-line",
+        name: "Ava_凜 工作篇 1",
+        slug: "ava-rin-work-1",
+        description:
+          "工作情境貼圖，包含加班中、開工啦、收到、馬上處理、會議中、下班啦。",
+      },
+    ],
+    items: files.map((file, index) => {
+      const title = fileTitle(file);
+
+      return {
+        id: `ava-rin-work-1-${String(index + 1).padStart(3, "0")}`,
+        categoryId: "cat-line",
+        seriesId: "series-work-1",
+        title,
+        displayText: title,
+        status: "完成",
+        image: `/images/line-stickers/ava-rin-work-1/${file}`,
+        notes: "Ava_凜 工作篇 1。",
+      };
+    }),
   };
-});
+}
 
-const seedData = {
-  categories: [
-    {
-      id: "cat-line",
-      name: "LINE 貼圖",
-      description: "Ava_凜 LINE 貼圖系列，依照系列整理單張貼圖。",
-    },
-  ],
-  series: [
-    {
-      id: "series-work-1",
-      categoryId: "cat-line",
-      name: "Ava_凜 工作篇 1",
-      description:
-        "工作情境貼圖，包含加班中、開工啦、收到、馬上處理、會議中、下班啦。",
-    },
-  ],
-  items,
-};
+function loadSourceData() {
+  ensureDir(dataFolder);
 
-const fileContent = `const seedData = ${JSON.stringify(seedData, null, 2)};
+  if (!fs.existsSync(sourceFile)) {
+    const data = buildDefaultSourceData();
+    fs.writeFileSync(sourceFile, JSON.stringify(data, null, 2), "utf8");
+    return data;
+  }
+
+  return JSON.parse(fs.readFileSync(sourceFile, "utf8"));
+}
+
+function writeSeedData(data) {
+  ensureDir(dataFolder);
+
+  const content = `const seedData = ${JSON.stringify(data, null, 2)};
 
 export default seedData;
 `;
 
-fs.mkdirSync(outputFolder, { recursive: true });
-fs.writeFileSync(outputFile, fileContent, "utf8");
+  fs.writeFileSync(seedFile, content, "utf8");
+}
+
+const sourceData = loadSourceData();
+writeSeedData(sourceData);
 
 console.log("完成產生 seedData.js");
-console.log(`圖片數量：${files.length}`);
-console.log(`輸出檔案：${outputFile}`);
-
-if (files.length === 0) {
-  console.log("提醒：圖片資料夾目前沒有 png/jpg/jpeg/webp 圖片。");
-}
+console.log(`分類數量：${sourceData.categories.length}`);
+console.log(`系列數量：${sourceData.series.length}`);
+console.log(`作品數量：${sourceData.items.length}`);
+console.log(`輸出檔案：${seedFile}`);

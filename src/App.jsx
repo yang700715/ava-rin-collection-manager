@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import seedData from "./data/seedData";
 
-const STORAGE_KEY = "avaRinCollectionManager.react.admin.v0.4";
+const API_BASE = "http://localhost:5174";
 
 function uid(prefix) {
   return `${prefix}-${Date.now().toString(36)}-${Math.random()
@@ -10,28 +10,26 @@ function uid(prefix) {
     .slice(2, 8)}`;
 }
 
-function loadData(isAdmin) {
-  if (!isAdmin) {
-    return seedData;
-  }
-
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : seedData;
-  } catch {
-    return seedData;
-  }
+function loadPublicData() {
+  return seedData;
 }
 
-function saveData(data) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (error) {
-    console.error("儲存失敗：", error);
-    alert(
-      "圖片太大或太多，瀏覽器 localStorage 存不下。公開展示建議使用 public/images + seedData.js。"
-    );
+async function apiRequest(path, options = {}) {
+  const response = await fetch(`${API_BASE}${path}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {}),
+    },
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.error || "本機 API 發生錯誤。");
   }
+
+  return data;
 }
 
 function fileToDataUrl(file) {
@@ -42,7 +40,7 @@ function fileToDataUrl(file) {
       const img = new Image();
 
       img.onload = () => {
-        const maxSize = 1000;
+        const maxSize = 1400;
         let { width, height } = img;
 
         if (width > maxSize || height > maxSize) {
@@ -62,7 +60,7 @@ function fileToDataUrl(file) {
         const ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0, width, height);
 
-        resolve(canvas.toDataURL("image/webp", 0.85));
+        resolve(canvas.toDataURL("image/webp", 0.9));
       };
 
       img.onerror = reject;
@@ -87,7 +85,7 @@ export default function App() {
   const isAdmin =
     new URLSearchParams(window.location.search).get("admin") === "1";
 
-  const [data, setData] = useState(() => loadData(isAdmin));
+  const [data, setData] = useState(loadPublicData);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     seedData.categories?.[0]?.id || ""
   );
@@ -99,12 +97,47 @@ export default function App() {
   const [modal, setModal] = useState(null);
   const [detailItem, setDetailItem] = useState(null);
   const [editingItem, setEditingItem] = useState(null);
+  const [apiReady, setApiReady] = useState(!isAdmin ? true : false);
 
   useEffect(() => {
-    if (isAdmin) {
-      saveData(data);
+    if (!isAdmin) {
+      setData(seedData);
+      return;
     }
-  }, [data, isAdmin]);
+
+    apiRequest("/api/admin-data")
+      .then((nextData) => {
+        applyData(nextData);
+        setApiReady(true);
+      })
+      .catch((error) => {
+        console.error(error);
+        setApiReady(false);
+        alert(
+          "本機寫檔 API 尚未啟動。請用 npm run dev 開啟，不要只開 Vite。"
+        );
+      });
+  }, [isAdmin]);
+
+  function applyData(nextData) {
+    setData(nextData);
+
+    const categoryExists = nextData.categories.some(
+      (category) => category.id === selectedCategoryId
+    );
+
+    const seriesExists = nextData.series.some(
+      (series) => series.id === selectedSeriesId
+    );
+
+    if (!categoryExists) {
+      setSelectedCategoryId(nextData.categories[0]?.id || "");
+    }
+
+    if (!seriesExists) {
+      setSelectedSeriesId(nextData.series[0]?.id || "");
+    }
+  }
 
   const selectedCategory = data.categories.find(
     (category) => category.id === selectedCategoryId
@@ -129,22 +162,7 @@ export default function App() {
     });
   }, [data.items, selectedCategoryId, selectedSeriesId, search, statusFilter]);
 
-  function updateData(nextData) {
-    setData(nextData);
-  }
-
-  function resetToSeedData() {
-    updateData(seedData);
-    setSelectedCategoryId(seedData.categories?.[0]?.id || "");
-    setSelectedSeriesId(seedData.series?.[0]?.id || "");
-    setSearch("");
-    setStatusFilter("全部");
-    setModal(null);
-    setDetailItem(null);
-    setEditingItem(null);
-  }
-
-  function addCategory(event) {
+  async function addCategory(event) {
     event.preventDefault();
 
     const form = new FormData(event.currentTarget);
@@ -155,23 +173,27 @@ export default function App() {
       return;
     }
 
-    const category = {
-      id: uid("cat"),
-      name,
-      description: form.get("description").trim(),
-    };
+    try {
+      const nextData = await apiRequest("/api/categories", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          description: form.get("description").trim(),
+        }),
+      });
 
-    updateData({
-      ...data,
-      categories: [...data.categories, category],
-    });
+      applyData(nextData);
 
-    setSelectedCategoryId(category.id);
-    setSelectedSeriesId("");
-    setModal(null);
+      const created = nextData.categories[nextData.categories.length - 1];
+      setSelectedCategoryId(created?.id || "");
+      setSelectedSeriesId("");
+      setModal(null);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
-  function addSeries(event) {
+  async function addSeries(event) {
     event.preventDefault();
 
     const form = new FormData(event.currentTarget);
@@ -188,21 +210,25 @@ export default function App() {
       return;
     }
 
-    const series = {
-      id: uid("series"),
-      categoryId,
-      name,
-      description: form.get("description").trim(),
-    };
+    try {
+      const nextData = await apiRequest("/api/series", {
+        method: "POST",
+        body: JSON.stringify({
+          categoryId,
+          name,
+          description: form.get("description").trim(),
+        }),
+      });
 
-    updateData({
-      ...data,
-      series: [...data.series, series],
-    });
+      applyData(nextData);
 
-    setSelectedCategoryId(series.categoryId);
-    setSelectedSeriesId(series.id);
-    setModal(null);
+      const created = nextData.series[nextData.series.length - 1];
+      setSelectedCategoryId(created?.categoryId || categoryId);
+      setSelectedSeriesId(created?.id || "");
+      setModal(null);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   async function addItems(event) {
@@ -233,57 +259,40 @@ export default function App() {
       return;
     }
 
-    const newItems = [];
+    try {
+      const uploadFiles = [];
 
-    if (files.length > 0) {
-      for (let i = 0; i < files.length; i += 1) {
-        const file = files[i];
-        const image = await fileToDataUrl(file);
-        const fileName = cleanFileName(file.name);
-        const number = String(i + 1).padStart(2, "0");
-
-        let title = "";
-        if (files.length === 1) {
-          title = baseTitle || fileName;
-        } else {
-          title = baseTitle ? `${baseTitle} ${number}` : fileName;
-        }
-
-        newItems.push({
-          id: uid("item"),
-          categoryId,
-          seriesId,
-          title,
-          displayText: displayText || title,
-          status,
-          image,
-          notes,
+      for (const file of files) {
+        uploadFiles.push({
+          name: file.name,
+          type: file.type,
+          dataUrl: await fileToDataUrl(file),
         });
       }
-    } else {
-      newItems.push({
-        id: uid("item"),
-        categoryId,
-        seriesId,
-        title: baseTitle,
-        displayText: displayText || baseTitle,
-        status,
-        image: "",
-        notes,
+
+      const nextData = await apiRequest("/api/items", {
+        method: "POST",
+        body: JSON.stringify({
+          categoryId,
+          seriesId,
+          baseTitle,
+          displayText,
+          status,
+          notes,
+          files: uploadFiles,
+        }),
       });
-    }
 
-    updateData({
-      ...data,
-      items: [...newItems, ...data.items],
-    });
+      applyData(nextData);
+      setSelectedCategoryId(categoryId);
+      setSelectedSeriesId(seriesId);
+      setModal(null);
 
-    setSelectedCategoryId(categoryId);
-    setSelectedSeriesId(seriesId);
-    setModal(null);
-
-    if (newItems.length > 1) {
-      alert(`已新增 ${newItems.length} 筆作品。`);
+      if (uploadFiles.length > 1) {
+        alert(`已新增 ${uploadFiles.length} 筆作品，並寫入本機資料夾。`);
+      }
+    } catch (error) {
+      alert(error.message);
     }
   }
 
@@ -296,15 +305,6 @@ export default function App() {
     const imageInput = event.currentTarget.querySelector('input[name="image"]');
     const file = imageInput?.files?.[0];
 
-    const seriesId = form.get("seriesId");
-    const series = data.series.find((entry) => entry.id === seriesId);
-
-    if (!series) {
-      alert("請選擇有效的系列。");
-      return;
-    }
-
-    const categoryId = series.categoryId;
     const title = form.get("title").trim();
 
     if (!title) {
@@ -312,47 +312,138 @@ export default function App() {
       return;
     }
 
-    let image = editingItem.image;
+    let uploadFile = null;
 
     if (file) {
-      image = await fileToDataUrl(file);
+      uploadFile = {
+        name: file.name,
+        type: file.type,
+        dataUrl: await fileToDataUrl(file),
+      };
     }
 
-    const updatedItem = {
-      ...editingItem,
-      categoryId,
-      seriesId,
-      title,
-      displayText: form.get("displayText").trim() || title,
-      status: form.get("status"),
-      image,
-      notes: form.get("notes").trim(),
-    };
+    try {
+      const nextData = await apiRequest(`/api/items/${editingItem.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          seriesId: form.get("seriesId"),
+          title,
+          displayText: form.get("displayText").trim(),
+          status: form.get("status"),
+          notes: form.get("notes").trim(),
+          file: uploadFile,
+        }),
+      });
 
-    updateData({
-      ...data,
-      items: data.items.map((item) =>
-        item.id === editingItem.id ? updatedItem : item
-      ),
-    });
-
-    setSelectedCategoryId(categoryId);
-    setSelectedSeriesId(seriesId);
-    setEditingItem(null);
-    setDetailItem(null);
+      applyData(nextData);
+      setEditingItem(null);
+      setDetailItem(null);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
-  function deleteItem(id) {
+  async function deleteItem(id) {
     const target = data.items.find((item) => item.id === id);
     if (!target) return;
 
-    const ok = confirm(`確定刪除「${target.title}」嗎？`);
+    const ok = confirm(`確定刪除「${target.title}」嗎？圖片檔案也會刪除。`);
     if (!ok) return;
 
-    updateData({
-      ...data,
-      items: data.items.filter((item) => item.id !== id),
-    });
+    try {
+      const nextData = await apiRequest(`/api/items/${id}`, {
+        method: "DELETE",
+      });
+
+      applyData(nextData);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  async function deleteCategory(id) {
+    const category = data.categories.find((entry) => entry.id === id);
+    if (!category) return;
+
+    const seriesCount = data.series.filter(
+      (entry) => entry.categoryId === id
+    ).length;
+
+    const itemCount = data.items.filter(
+      (entry) => entry.categoryId === id
+    ).length;
+
+    const ok = confirm(
+      `確定刪除主分類「${category.name}」嗎？\n\n` +
+        `會一併刪除：\n` +
+        `系列：${seriesCount} 個\n` +
+        `作品：${itemCount} 張\n` +
+        `資料夾：public/images/${category.slug}\n\n` +
+        `這個動作會真的刪除本機檔案。`
+    );
+
+    if (!ok) return;
+
+    try {
+      const nextData = await apiRequest(
+        `/api/categories/${encodeURIComponent(id)}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      applyData(nextData);
+      setSelectedCategoryId(nextData.categories[0]?.id || "");
+      setSelectedSeriesId(nextData.series[0]?.id || "");
+      setDetailItem(null);
+      setEditingItem(null);
+
+      alert(`已刪除主分類「${category.name}」。`);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  async function deleteSeries(id) {
+    const series = data.series.find((entry) => entry.id === id);
+    if (!series) return;
+
+    const category = data.categories.find(
+      (entry) => entry.id === series.categoryId
+    );
+
+    const itemCount = data.items.filter(
+      (entry) => entry.seriesId === id
+    ).length;
+
+    const ok = confirm(
+      `確定刪除系列「${series.name}」嗎？\n\n` +
+        `會一併刪除：\n` +
+        `作品：${itemCount} 張\n` +
+        `資料夾：public/images/${category?.slug || "未分類"}/${series.slug}\n\n` +
+        `這個動作會真的刪除本機檔案。`
+    );
+
+    if (!ok) return;
+
+    try {
+      const nextData = await apiRequest(
+        `/api/series/${encodeURIComponent(id)}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      applyData(nextData);
+      setSelectedCategoryId(category?.id || nextData.categories[0]?.id || "");
+      setSelectedSeriesId("");
+      setDetailItem(null);
+      setEditingItem(null);
+
+      alert(`已刪除系列「${series.name}」。`);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   function exportJson() {
@@ -378,19 +469,13 @@ export default function App() {
       const text = await file.text();
       const imported = JSON.parse(text);
 
-      if (
-        !Array.isArray(imported.categories) ||
-        !Array.isArray(imported.series) ||
-        !Array.isArray(imported.items)
-      ) {
-        alert("JSON 格式不正確。");
-        return;
-      }
+      const nextData = await apiRequest("/api/import-data", {
+        method: "POST",
+        body: JSON.stringify(imported),
+      });
 
-      updateData(imported);
-      setSelectedCategoryId(imported.categories[0]?.id || "");
-      setSelectedSeriesId(imported.series[0]?.id || "");
-      alert("匯入完成。");
+      applyData(nextData);
+      alert("匯入完成，並已更新 seedData.js。");
     } catch {
       alert("匯入失敗，請確認檔案。");
     }
@@ -398,23 +483,14 @@ export default function App() {
     event.target.value = "";
   }
 
-  function clearAll() {
-    const ok = confirm("確定清空全部資料嗎？建議先匯出 JSON 備份。");
-    if (!ok) return;
-
-    updateData({
-      categories: [],
-      series: [],
-      items: [],
-    });
-
-    setSelectedCategoryId("");
-    setSelectedSeriesId("");
-    setSearch("");
-    setStatusFilter("全部");
-    setModal(null);
-    setDetailItem(null);
-    setEditingItem(null);
+  async function reloadAdminData() {
+    try {
+      const nextData = await apiRequest("/api/admin-data");
+      applyData(nextData);
+      alert("已重新讀取本機資料。");
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   return (
@@ -424,7 +500,7 @@ export default function App() {
           <div className="brandMark">凜</div>
           <div>
             <h1>Ava_凜 作品庫</h1>
-            <p>{isAdmin ? "Admin Mode v0.4" : "Gallery Mode v0.4"}</p>
+            <p>{isAdmin ? "Local Admin v0.6d" : "Gallery Mode v0.6d"}</p>
           </div>
         </div>
 
@@ -442,6 +518,9 @@ export default function App() {
                 onChange={importJson}
               />
             </label>
+            <button onClick={reloadAdminData} className="ghost">
+              重新讀取本機資料
+            </button>
           </div>
         )}
 
@@ -511,11 +590,12 @@ export default function App() {
         <div className="note">
           {isAdmin ? (
             <>
-              <strong>管理模式</strong>
+              <strong>本機寫檔管理模式</strong>
               <p>
-                這裡是本機管理用。公開展示建議使用 public/images +
+                新增分類會建立資料夾；新增貼圖會寫入 public/images，並更新
                 seedData.js。
               </p>
+              {!apiReady && <p>API 尚未連線，請確認 npm run dev 有啟動。</p>}
             </>
           ) : (
             <>
@@ -530,23 +610,10 @@ export default function App() {
         <header className="topbar">
           <div>
             <p className="eyebrow">
-              {isAdmin
-                ? "Editable Website Prototype"
-                : "Ava_凜 Works Gallery"}
+              {isAdmin ? "Local File Writer" : "Ava_凜 Works Gallery"}
             </p>
             <h2>分類 ＞ 系列 ＞ 貼圖作品</h2>
           </div>
-
-          {isAdmin && (
-            <div className="topActions">
-              <button className="ghost" onClick={resetToSeedData}>
-                讀取公開資料
-              </button>
-              <button className="danger" onClick={clearAll}>
-                清空資料
-              </button>
-            </div>
-          )}
         </header>
 
         <section className="hero">
@@ -569,6 +636,24 @@ export default function App() {
             <div className="quickActions">
               <button onClick={() => setModal("series")}>＋ 新增系列</button>
               <button onClick={() => setModal("item")}>＋ 新增貼圖</button>
+
+              {selectedSeries && (
+                <button
+                  className="danger"
+                  onClick={() => deleteSeries(selectedSeries.id)}
+                >
+                  刪除系列
+                </button>
+              )}
+
+              {selectedCategory && !selectedSeries && (
+                <button
+                  className="danger"
+                  onClick={() => deleteCategory(selectedCategory.id)}
+                >
+                  刪除分類
+                </button>
+              )}
             </div>
           )}
         </section>
@@ -598,7 +683,7 @@ export default function App() {
               <h4>目前沒有作品</h4>
               <p>
                 {isAdmin
-                  ? "可用「讀取公開資料」載入 seedData，或點右上角新增作品。"
+                  ? "點右上角「＋ 新增貼圖」，可以一次選多張圖片。"
                   : "這個分類或系列目前還沒有公開作品。"}
               </p>
             </div>
@@ -607,12 +692,7 @@ export default function App() {
               <article className="card" key={item.id}>
                 <div className="imageBox">
                   {item.image ? (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      draggable="false"
-                      onContextMenu={(event) => event.preventDefault()}
-                    />
+                    <img src={item.image} alt={item.title} />
                   ) : (
                     <div className="placeholder">凜</div>
                   )}
@@ -745,12 +825,7 @@ export default function App() {
           <div className="detail">
             <div className="detailImage">
               {detailItem.image ? (
-                <img
-                  src={detailItem.image}
-                  alt={detailItem.title}
-                  draggable="false"
-                  onContextMenu={(event) => event.preventDefault()}
-                />
+                <img src={detailItem.image} alt={detailItem.title} />
               ) : (
                 <div className="placeholder">凜</div>
               )}
@@ -765,6 +840,10 @@ export default function App() {
                 <div>
                   <dt>狀態</dt>
                   <dd>{detailItem.status}</dd>
+                </div>
+                <div>
+                  <dt>圖片</dt>
+                  <dd>{detailItem.image || "無"}</dd>
                 </div>
               </dl>
             </div>
@@ -885,7 +964,7 @@ function AddItemModal({
             multiple
           />
           <small>
-            可按住 Ctrl 或 Shift 一次選多張。每張圖片會新增成一筆作品。
+            圖片會寫入 public/images/主分類/系列，並自動更新 seedData.js。
           </small>
         </label>
 
@@ -967,7 +1046,9 @@ function EditItemModal({ data, editingItem, onClose, onSubmit }) {
             type="file"
             accept="image/png,image/jpeg,image/webp"
           />
-          <small>不選圖片就會保留原本圖片；選新圖片會替換掉原圖。</small>
+          <small>
+            不選圖片就保留原圖；選新圖片會寫入資料夾並更新路徑。
+          </small>
         </label>
 
         <label>

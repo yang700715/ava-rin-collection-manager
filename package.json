@@ -4,10 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/devAdmin.cjs",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:vite": "vite",
+    "sync": "node scripts/generateSeedData.cjs",
+    "prebuild": "npm run sync"
   },
   "dependencies": {
     "react": "^19.2.6",
