@@ -82,7 +82,12 @@ function cleanFileName(name) {
 }
 
 export default function App() {
+  const isLocalhost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
   const isAdmin =
+    isLocalhost &&
     new URLSearchParams(window.location.search).get("admin") === "1";
 
   const [data, setData] = useState(loadPublicData);
@@ -500,7 +505,7 @@ export default function App() {
           <div className="brandMark">凜</div>
           <div>
             <h1>Ava_凜 作品庫</h1>
-            <p>{isAdmin ? "Local Admin v0.6d" : "Gallery Mode v0.6d"}</p>
+            <p>{isAdmin ? "Local Admin v0.6ee" : "Gallery Mode v0.6ee"}</p>
           </div>
         </div>
 
