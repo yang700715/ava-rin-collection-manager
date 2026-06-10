@@ -5,6 +5,12 @@
       "name": "LINE 貼圖",
       "slug": "line-stickers",
       "description": "Ava_凜 LINE 貼圖系列，依照系列整理單張貼圖。"
+    },
+    {
+      "id": "cat-mq7rgc1s-tbdbwm",
+      "name": "二創模型",
+      "slug": "二創模型",
+      "description": ""
     }
   ],
   "series": [
@@ -35,9 +41,26 @@
       "name": "Ava_凜 穿搭篇 1",
       "slug": "Ava_凜-穿搭篇-1",
       "description": ""
+    },
+    {
+      "id": "series-mq7rimcn-pjlbku",
+      "categoryId": "cat-mq7rgc1s-tbdbwm",
+      "name": "Look up",
+      "slug": "Look-up",
+      "description": ""
     }
   ],
   "items": [
+    {
+      "id": "item-mq7rmuvf-uzxfj2",
+      "categoryId": "cat-mq7rgc1s-tbdbwm",
+      "seriesId": "series-mq7rimcn-pjlbku",
+      "title": "淡紫色短版針織",
+      "displayText": "淡紫色短版針織",
+      "status": "完成",
+      "image": "/images/二創模型/Look-up/淡紫色短版針織.png",
+      "notes": ""
+    },
     {
       "id": "item-mq7qehpp-vu2px5",
       "categoryId": "cat-line",
