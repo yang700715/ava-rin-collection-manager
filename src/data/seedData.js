@@ -719,6 +719,16 @@ const seedData = {
       "seriesId": "series-ava-rin-t-shirt",
       "status": "完成",
       "notes": "Ava_凜 周邊概念中的 T-shirt 系列，收錄以 Ava_凜 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
+    },
+    {
+      "id": "item-ava-rin-t-shirt-pink-04",
+      "title": "Subscriber Lv3 Guardian Edition 01",
+      "displayText": "Pink T-shirt",
+      "image": "/images/Ava_凜 周邊/T-shirt/Pink T-shirt/Subscriber Lv3 Guardian Edition 01.png",
+      "categoryId": "cat-ava-rin-merch",
+      "seriesId": "series-ava-rin-t-shirt",
+      "status": "完成",
+      "notes": "Ava_凜 T 訂閱者 Lv3 Guardian 專屬紀念款，粉色 #FFB6C1，含 Guardian 臂章設計。"
     }
   ]
 };
