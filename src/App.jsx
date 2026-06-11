@@ -152,12 +152,38 @@ export default function App() {
     (series) => series.id === selectedSeriesId
   );
 
+  const selectedParentSeries = selectedSeries?.parentSeriesId
+    ? data.series.find((series) => series.id === selectedSeries.parentSeriesId)
+    : null;
+
+  const isErPangDaiConcept =
+    selectedSeriesId === "series-er-pang-dai-design-concept";
+
+  const erPangDaiConceptItem = data.items.find(
+    (item) => item.id === "item-er-pang-dai-hooky"
+  );
+
+  const breadcrumbParts = [
+    selectedCategory?.name || "全部分類",
+    ...(selectedParentSeries ? [selectedParentSeries.name] : []),
+    selectedSeries?.name || "全部系列",
+  ];
+
   const visibleItems = useMemo(() => {
+    const selectedSeriesIds = selectedSeriesId
+      ? [
+          selectedSeriesId,
+          ...data.series
+            .filter((series) => series.parentSeriesId === selectedSeriesId)
+            .map((series) => series.id),
+        ]
+      : [];
+
     return data.items.filter((item) => {
       const matchCategory =
         !selectedCategoryId || item.categoryId === selectedCategoryId;
       const matchSeries =
-        !selectedSeriesId || item.seriesId === selectedSeriesId;
+        !selectedSeriesId || selectedSeriesIds.includes(item.seriesId);
       const matchStatus =
         statusFilter === "全部" || item.status === statusFilter;
       const keyword = `${item.title} ${item.displayText} ${item.notes}`.toLowerCase();
@@ -165,7 +191,14 @@ export default function App() {
 
       return matchCategory && matchSeries && matchStatus && matchSearch;
     });
-  }, [data.items, selectedCategoryId, selectedSeriesId, search, statusFilter]);
+  }, [
+    data.items,
+    data.series,
+    selectedCategoryId,
+    selectedSeriesId,
+    search,
+    statusFilter,
+  ]);
 
   async function addCategory(event) {
     event.preventDefault();
@@ -545,7 +578,8 @@ export default function App() {
                 (item) => item.categoryId === category.id
               );
               const childSeries = data.series.filter(
-                (series) => series.categoryId === category.id
+                (series) =>
+                  series.categoryId === category.id && !series.parentSeriesId
               );
 
               return (
@@ -566,24 +600,56 @@ export default function App() {
                   </button>
 
                   {childSeries.map((series) => {
-                    const count = data.items.filter(
-                      (item) => item.seriesId === series.id
+                    const nestedSeries = data.series.filter(
+                      (entry) => entry.parentSeriesId === series.id
+                    );
+
+                    const seriesIds = [
+                      series.id,
+                      ...nestedSeries.map((entry) => entry.id),
+                    ];
+
+                    const count = data.items.filter((item) =>
+                      seriesIds.includes(item.seriesId)
                     ).length;
 
                     return (
-                      <button
-                        key={series.id}
-                        className={`seriesBtn ${
-                          selectedSeriesId === series.id ? "active" : ""
-                        }`}
-                        onClick={() => {
-                          setSelectedCategoryId(category.id);
-                          setSelectedSeriesId(series.id);
-                        }}
-                      >
-                        <span>› {series.name}</span>
-                        <em>{count}</em>
-                      </button>
+                      <div className="seriesBranch" key={series.id}>
+                        <button
+                          className={`seriesBtn ${
+                            selectedSeriesId === series.id ? "active" : ""
+                          }`}
+                          onClick={() => {
+                            setSelectedCategoryId(category.id);
+                            setSelectedSeriesId(series.id);
+                          }}
+                        >
+                          <span>› {series.name}</span>
+                          <em>{count}</em>
+                        </button>
+
+                        {nestedSeries.map((nested) => {
+                          const nestedCount = data.items.filter(
+                            (item) => item.seriesId === nested.id
+                          ).length;
+
+                          return (
+                            <button
+                              key={nested.id}
+                              className={`seriesBtn subSeriesBtn ${
+                                selectedSeriesId === nested.id ? "active" : ""
+                              }`}
+                              onClick={() => {
+                                setSelectedCategoryId(category.id);
+                                setSelectedSeriesId(nested.id);
+                              }}
+                            >
+                              <span>› {nested.name}</span>
+                              <em>{nestedCount}</em>
+                            </button>
+                          );
+                        })}
+                      </div>
                     );
                   })}
                 </div>
@@ -624,8 +690,7 @@ export default function App() {
         <section className="hero">
           <div>
             <p className="breadcrumb">
-              {selectedCategory?.name || "全部分類"} ＞{" "}
-              {selectedSeries?.name || "全部系列"} ＞ 貼圖
+              {breadcrumbParts.join(" ＞ ")}
             </p>
             <h3>
               {selectedSeries?.name || selectedCategory?.name || "全部作品"}
@@ -663,6 +728,45 @@ export default function App() {
           )}
         </section>
 
+        {isErPangDaiConcept && erPangDaiConceptItem && (
+          <section className="conceptPage">
+            <div className="conceptImage">
+              <img
+                src={erPangDaiConceptItem.image}
+                alt={erPangDaiConceptItem.title}
+              />
+            </div>
+            <div className="conceptPanel">
+              <p className="eyebrow">Character Concept</p>
+              <h3>二胖呆設計概念</h3>
+              <p>
+                以「翹班中」這張視覺作為二胖呆的角色概念核心，保留慵懶、任性、可愛又有一點小聰明的氣質。
+              </p>
+              <div className="conceptPoints">
+                <div>
+                  <strong>角色語氣</strong>
+                  <span>鬆弛、直覺、帶點反骨，但不失親近感。</span>
+                </div>
+                <div>
+                  <strong>視覺重點</strong>
+                  <span>大字標語、便利貼、墨鏡與翹腳姿態，建立一眼可辨識的偷閒情境。</span>
+                </div>
+                <div>
+                  <strong>延伸方向</strong>
+                  <span>可延伸為生活語錄、上班日常、情緒回覆與角色周邊概念。</span>
+                </div>
+              </div>
+              <button
+                className="ghost"
+                onClick={() => setDetailItem(erPangDaiConceptItem)}
+              >
+                查看原圖資訊
+              </button>
+            </div>
+          </section>
+        )}
+
+        {!isErPangDaiConcept && (
         <section className="toolbar">
           <input
             type="search"
@@ -681,7 +785,9 @@ export default function App() {
             <option>暫停</option>
           </select>
         </section>
+        )}
 
+        {!isErPangDaiConcept && (
         <section className="grid">
           {visibleItems.length === 0 ? (
             <div className="emptyCard">
@@ -746,6 +852,7 @@ export default function App() {
             ))
           )}
         </section>
+        )}
       </main>
 
       {isAdmin && modal === "category" && (
