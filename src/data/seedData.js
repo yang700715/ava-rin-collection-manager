@@ -1,6 +1,12 @@
 const seedData = {
   "categories": [
     {
+      "id": "cat-er-pang-dai-original",
+      "name": "二胖呆原創",
+      "slug": "二胖呆原創",
+      "description": "二胖呆原創角色與作品資料，收錄角色設定、表情語氣與設計概念。"
+    },
+    {
       "id": "cat-line",
       "name": "Ava_凜 原創",
       "slug": "line-stickers",
@@ -17,12 +23,6 @@ const seedData = {
       "name": "Ava_凜 周邊",
       "slug": "Ava_凜 周邊",
       "description": "Ava_凜 周邊概念作品，收錄角色延伸的服裝、日常小物與視覺設計概念。"
-    },
-    {
-      "id": "cat-er-pang-dai-original",
-      "name": "二胖呆原創",
-      "slug": "二胖呆原創",
-      "description": "二胖呆原創角色與作品資料，收錄角色設定、表情語氣與設計概念。"
     }
   ],
   "series": [

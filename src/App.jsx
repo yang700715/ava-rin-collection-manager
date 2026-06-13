@@ -81,6 +81,12 @@ function cleanFileName(name) {
   );
 }
 
+const hiddenGalleryCategoryIds = new Set([
+  "cat-line",
+  "cat-mq7rgc1s-tbdbwm",
+  "cat-ava-rin-merch",
+]);
+
 export default function App() {
   const isLocalhost =
     window.location.hostname === "localhost" ||
@@ -91,12 +97,15 @@ export default function App() {
     new URLSearchParams(window.location.search).get("admin") === "1";
 
   const [data, setData] = useState(loadPublicData);
+  const firstVisibleSeedCategory =
+    seedData.categories?.find(
+      (category) => !hiddenGalleryCategoryIds.has(category.id)
+    ) || seedData.categories?.[0];
+
   const [selectedCategoryId, setSelectedCategoryId] = useState(
-    seedData.categories?.[0]?.id || ""
+    firstVisibleSeedCategory?.id || ""
   );
-  const [selectedSeriesId, setSelectedSeriesId] = useState(
-    seedData.series?.[0]?.id || ""
-  );
+  const [selectedSeriesId, setSelectedSeriesId] = useState("");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("全部");
   const [modal, setModal] = useState(null);
@@ -136,7 +145,12 @@ export default function App() {
     );
 
     if (!categoryExists) {
-      setSelectedCategoryId(nextData.categories[0]?.id || "");
+      const firstVisibleCategory =
+        nextData.categories.find(
+          (category) => !hiddenGalleryCategoryIds.has(category.id)
+        ) || nextData.categories[0];
+
+      setSelectedCategoryId(firstVisibleCategory?.id || "");
     }
 
     if (!seriesExists) {
@@ -146,6 +160,10 @@ export default function App() {
 
   const selectedCategory = data.categories.find(
     (category) => category.id === selectedCategoryId
+  );
+
+  const visibleCategories = data.categories.filter(
+    (category) => !hiddenGalleryCategoryIds.has(category.id)
   );
 
   const selectedSeries = data.series.find(
@@ -537,7 +555,7 @@ export default function App() {
         <div className="brand">
           <div className="brandMark">凜</div>
           <div>
-            <h1>Ava_凜 作品庫</h1>
+            <h1>二呆胖作品庫</h1>
             <p>{isAdmin ? "Local Admin v0.6ee" : "Gallery Mode v0.6ee"}</p>
           </div>
         </div>
@@ -563,7 +581,7 @@ export default function App() {
         )}
 
         <nav className="tree">
-          {data.categories.length === 0 ? (
+          {visibleCategories.length === 0 ? (
             <div className="note">
               <strong>尚未建立分類</strong>
               <p>
@@ -573,7 +591,7 @@ export default function App() {
               </p>
             </div>
           ) : (
-            data.categories.map((category) => {
+            visibleCategories.map((category) => {
               const categoryItems = data.items.filter(
                 (item) => item.categoryId === category.id
               );
