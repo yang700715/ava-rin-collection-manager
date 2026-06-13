@@ -77,6 +77,20 @@ const seedData = {
       "name": "二胖呆設計概念",
       "slug": "二胖呆設計概念",
       "description": "二胖呆設計概念頁，整理角色原創視覺、生活感情境與可延伸的作品方向。"
+    },
+    {
+      "id": "series-er-pang-dai-skill-upgrade",
+      "categoryId": "cat-er-pang-dai-original",
+      "name": "二胖呆能力升級篇",
+      "slug": "二胖呆能力升級篇",
+      "description": "二胖呆能力升級篇，收錄以投資自己、裝備升級與創作能力成長為主題的原創作品。"
+    },
+    {
+      "id": "series-er-pang-dai-special",
+      "categoryId": "cat-er-pang-dai-original",
+      "name": "二胖呆特別篇",
+      "slug": "二胖呆特別篇",
+      "description": "二胖呆特別篇，收錄應援亂入、節日互動與直播感幽默情境的原創作品。"
     }
   ],
   "items": [
@@ -689,6 +703,26 @@ const seedData = {
       "status": "完成",
       "image": "/images/二胖呆原創/二胖呆設計概念/二胖呆 翹班中.png",
       "notes": "這是二胖呆原創角色的設計概念頁，以「翹班中」這張視覺作為核心，整理角色的性格氣質、生活感情境與延伸創作方向。"
+    },
+    {
+      "id": "item-er-pang-dai-skill-upgrade-01",
+      "categoryId": "cat-er-pang-dai-original",
+      "seriesId": "series-er-pang-dai-skill-upgrade",
+      "title": "01 本月斗內休兵・能力升級中",
+      "displayText": "二胖呆｜本月斗內休兵・能力升級中",
+      "status": "完成",
+      "image": "/images/二胖呆原創/二胖呆能力升級篇/01 本月斗內休兵・能力升級中.png",
+      "notes": "二胖呆站在對面擔任「外拍裝備基金守衛」，主題是本月斗內休兵、專注投資自己，將預算轉向外拍裝備與剪輯能力升級。核心標語為「我們沒應徵資格，但能力不能輸。」"
+    },
+    {
+      "id": "item-er-pang-dai-special-01",
+      "categoryId": "cat-er-pang-dai-original",
+      "seriesId": "series-er-pang-dai-special",
+      "title": "01 Ava 媽媽我愛妳",
+      "displayText": "二胖呆｜Ava 媽媽我愛妳",
+      "status": "完成",
+      "image": "/images/二胖呆原創/二胖呆特別篇/01 Ava 媽媽我愛妳.png",
+      "notes": "二胖呆在舞台旁邊狂比愛心，旁邊有一束一束康乃馨，主題是「Ava 媽媽我愛妳」。這張屬於二胖呆原創的應援亂入／特別篇作品，帶有可愛、誇張、直播互動式的幽默感。"
     },
     {
       "id": "item-ava-rin-t-shirt-black-01",
