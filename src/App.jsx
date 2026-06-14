@@ -1,4 +1,6 @@
+import AuthGate from "./components/AuthGate";
 import { useEffect, useMemo, useState } from "react";
+
 import "./App.css";
 import seedData from "./data/seedData";
 
@@ -550,6 +552,7 @@ export default function App() {
   }
 
   return (
+    <AuthGate>
     <div className="app">
       <aside className="sidebar">
         <div className="brand">
@@ -981,6 +984,7 @@ export default function App() {
         </Modal>
       )}
     </div>
+    </AuthGate>
   );
 }
 
