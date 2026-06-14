@@ -554,7 +554,7 @@ export default function App() {
         <div className="brand">
           <div className="brandMark">凜</div>
           <div>
-            <h1>二呆胖作品庫</h1>
+            <h1>Ava_凜作品庫</h1>
             <p>{isAdmin ? "Local Admin v0.6ee" : "Gallery Mode v0.6ee"}</p>
           </div>
         </div>
