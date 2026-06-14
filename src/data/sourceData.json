@@ -369,8 +369,18 @@
       "title": "20260614 飆車Ava｜一定要第一名",
       "displayText": "20260614 飆車Ava｜一定要第一名",
       "status": "完成",
-      "image": "/images/ava-rin-line-stickers/ava-rin-live-records/20260614-racing-ava-first-place.png",
+      "image": "/images/line-stickers/ava-rin-live-records/20260614-racing-ava-first-place.png",
       "notes": "Ava_凜 直播紀錄：20260614 飆車Ava｜一定要第一名。"
+    },
+    {
+      "id": "item-meccha-chameleon-ava-hide-and-seek",
+      "categoryId": "cat-line",
+      "seriesId": "series-ava-rin-live-records",
+      "title": "Meccha Chameleon Ava??????",
+      "displayText": "Meccha Chameleon Ava??????",
+      "status": "??",
+      "image": "/images/line-stickers/ava-rin-live-records/meccha-chameleon-ava-hide-and-seek.png",
+      "notes": "Ava_? ?????Meccha Chameleon Ava???????"
     },
     {
       "id": "item-mq7kvvlz-g0x2r0",
