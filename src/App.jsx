@@ -83,11 +83,7 @@ function cleanFileName(name) {
   );
 }
 
-const hiddenGalleryCategoryIds = new Set([
-  "cat-line",
-  "cat-mq7rgc1s-tbdbwm",
-  "cat-ava-rin-merch",
-]);
+const hiddenGalleryCategoryIds = new Set([]);
 
 export default function App() {
   const isLocalhost =
