@@ -50,6 +50,14 @@ const seedData = {
       "description": "Ava_凜 Line貼圖中的直播中篇，收錄直播、耳機、麥克風與互動情境相關貼圖作品。"
     },
     {
+      "id": "series-ava-rin-live-records",
+      "categoryId": "cat-line",
+      "parentSeriesId": "series-ava-rin-line-stickers",
+      "name": "Ava_凜 直播紀錄",
+      "slug": "Ava_凜-直播紀錄",
+      "description": "Ava_凜 Line貼圖中的直播紀錄分類，收錄依照直播日期與主題整理的貼圖作品。"
+    },
+    {
       "id": "series-ava-rin-daily-1",
       "categoryId": "cat-line",
       "parentSeriesId": "series-ava-rin-line-stickers",
@@ -353,6 +361,16 @@ const seedData = {
       "status": "完成",
       "image": "/images/line-stickers/Ava_凜-直播中篇-1/14-粉色上衣拿水瓶.png",
       "notes": ""
+    },
+    {
+      "id": "item-20260614-racing-ava-first-place",
+      "categoryId": "cat-line",
+      "seriesId": "series-ava-rin-live-records",
+      "title": "20260614 飆車Ava｜一定要第一名",
+      "displayText": "20260614 飆車Ava｜一定要第一名",
+      "status": "完成",
+      "image": "/images/line-stickers/Ava_凜-直播紀錄/20260614-飆車Ava-一定要第一名.png",
+      "notes": "Ava_凜 直播紀錄：20260614 飆車Ava｜一定要第一名。"
     },
     {
       "id": "item-mq7kvvlz-g0x2r0",
