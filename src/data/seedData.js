@@ -99,6 +99,13 @@ const seedData = {
       "name": "二胖呆特別篇",
       "slug": "二胖呆特別篇",
       "description": "二胖呆特別篇，收錄應援亂入、節日互動與直播感幽默情境的原創作品。"
+    },
+    {
+      "id": "series-er-pang-dai-2026-fifa-world-cup",
+      "categoryId": "cat-er-pang-dai-original",
+      "name": "二胖呆 2026 FIFA World Cup",
+      "slug": "er-pang-dai-2026 fifa world cup",
+      "description": "二胖呆 2026 FIFA World Cup 主題收藏。"
     }
   ],
   "items": [
@@ -791,6 +798,36 @@ const seedData = {
       "seriesId": "series-ava-rin-t-shirt",
       "status": "完成",
       "notes": "Ava_凜 T 訂閱者 Lv3 Guardian 專屬紀念款，粉色 #FFB6C1，含 Guardian 臂章設計。"
+    },
+    {
+      "id": "item-20260609-backrooms-ava-adventure",
+      "categoryId": "cat-line",
+      "seriesId": "series-ava-rin-live-records",
+      "title": "20260609 Backrooms Ava｜後室探險",
+      "displayText": "20260609 Backrooms Ava｜後室探險",
+      "status": "完成",
+      "image": "/images/line-stickers/ava-rin-live-records/20260609 Backrooms Ava｜後室探險.png",
+      "notes": "Ava_凜 直播紀錄：20260609 Backrooms Ava｜後室探險。"
+    },
+    {
+      "id": "item-er-pang-dai-2026-fifa-world-cup-01",
+      "categoryId": "cat-er-pang-dai-original",
+      "seriesId": "series-er-pang-dai-2026-fifa-world-cup",
+      "title": "01 二胖呆 2026 FIFA World Cup",
+      "displayText": "二胖呆 2026 FIFA World Cup 01",
+      "status": "完成",
+      "image": "/images/er-pang-dai-original/er-pang-dai-2026 fifa world cup/ChatGPT Image 2026年6月16日 上午12_29_57.png",
+      "notes": "二胖呆 2026 FIFA World Cup 主題收藏。"
+    },
+    {
+      "id": "item-er-pang-dai-2026-fifa-world-cup-02",
+      "categoryId": "cat-er-pang-dai-original",
+      "seriesId": "series-er-pang-dai-2026-fifa-world-cup",
+      "title": "02 二胖呆 2026 FIFA World Cup",
+      "displayText": "二胖呆 2026 FIFA World Cup 02",
+      "status": "完成",
+      "image": "/images/er-pang-dai-original/er-pang-dai-2026 fifa world cup/ChatGPT Image 2026年6月16日 上午12_56_34.png",
+      "notes": "二胖呆 2026 FIFA World Cup 主題收藏。"
     }
   ]
 };

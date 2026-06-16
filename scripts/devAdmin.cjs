@@ -584,7 +584,7 @@ server.listen(port, () => {
   console.log("即將啟動 Vite：http://localhost:5173");
 });
 
-const vite = spawn("npm", ["run", "dev:vite"], {
+const vite = spawn("npm", ["run", "dev:vite", "--", "--configLoader", "runner"], {
   cwd: projectRoot,
   stdio: "inherit",
   shell: true,
