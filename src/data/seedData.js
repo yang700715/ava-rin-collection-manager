@@ -34,6 +34,14 @@ const seedData = {
       "description": "Ava_凜 原創 LINE 貼圖系列，收錄日常生活、直播中、穿搭與工作情境等角色貼圖設計。"
     },
     {
+      "id": "series-cute-ava-rin-series",
+      "categoryId": "cat-line",
+      "parentSeriesId": "series-ava-rin-line-stickers",
+      "name": "Cute Ava_Rin Series",
+      "slug": "Cute-Ava-Rin-Series",
+      "description": "A cute Ava_Rin line sticker series with warm, stream-themed moments."
+    },
+    {
       "id": "series-ava-rin-outfit-1",
       "categoryId": "cat-line",
       "parentSeriesId": "series-ava-rin-line-stickers",
@@ -828,6 +836,16 @@ const seedData = {
       "status": "完成",
       "image": "/images/er-pang-dai-original/er-pang-dai-2026 fifa world cup/ChatGPT Image 2026年6月16日 上午12_56_34.png",
       "notes": "二胖呆 2026 FIFA World Cup 主題收藏。"
+    },
+    {
+      "id": "item-cute-ava-rin-warm-stream-desk-smile-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Warm Stream Desk Smile 01",
+      "displayText": "Warm Stream Desk Smile 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Cute_Ava_Rin_Series_Warm_Stream_Desk_Smile_01.png",
+      "notes": "Cute Ava_Rin Series: Warm Stream Desk Smile 01."
     }
   ]
 };
