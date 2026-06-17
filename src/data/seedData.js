@@ -856,6 +856,16 @@ const seedData = {
       "status": "完成",
       "image": "/images/line-stickers/Cute Ava_Rin Series/Iceland_Glacier_With_Mom_01.png",
       "notes": "Cute Ava_Rin Series: Iceland Glacier With Mom 01."
+    },
+    {
+      "id": "item-cute-ava-rin-iceland-winter-coast-portrait-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Iceland Winter Coast Portrait 01",
+      "displayText": "Iceland Winter Coast Portrait 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/iceland-winter-coast-portrait-01.png",
+      "notes": "Cute Ava_Rin Series: Iceland Winter Coast Portrait 01."
     }
   ]
 };
