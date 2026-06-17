@@ -866,6 +866,16 @@
       "status": "完成",
       "image": "/images/line-stickers/Cute Ava_Rin Series/iceland-winter-coast-portrait-01.png",
       "notes": "Cute Ava_Rin Series: Iceland Winter Coast Portrait 01."
+    },
+    {
+      "id": "item-cute-ava-rin-gemini-creator-academy-taichung-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Gemini Creator Academy Taichung 01",
+      "displayText": "Gemini Creator Academy Taichung 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Gemini_Creator_Academy_Taichung_01.png",
+      "notes": "Cute Ava_Rin Series: Gemini Creator Academy Taichung 01."
     }
   ]
 }
