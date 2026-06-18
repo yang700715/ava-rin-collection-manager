@@ -876,6 +876,16 @@
       "status": "完成",
       "image": "/images/line-stickers/Cute Ava_Rin Series/Gemini_Creator_Academy_Taichung_01.png",
       "notes": "Cute Ava_Rin Series: Gemini Creator Academy Taichung 01."
+    },
+    {
+      "id": "item-cute-ava-rin-dragon-boat-festival-handmade-zongzi-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Dragon Boat Festival Handmade Zongzi 01",
+      "displayText": "Dragon Boat Festival Handmade Zongzi 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Dragon_Boat_Festival_Handmade_Zongzi_01.png",
+      "notes": "Cute Ava_Rin Series: Dragon Boat Festival Handmade Zongzi 01."
     }
   ]
 }
