@@ -886,6 +886,76 @@ const seedData = {
       "status": "完成",
       "image": "/images/line-stickers/Cute Ava_Rin Series/Dragon_Boat_Festival_Handmade_Zongzi_01.png",
       "notes": "Cute Ava_Rin Series: Dragon Boat Festival Handmade Zongzi 01."
+    },
+    {
+      "id": "item-cute-ava-rin-black-jacket-pose-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Ava Rin Black Jacket Pose 01",
+      "displayText": "Ava Rin Black Jacket Pose 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Black_Jacket_Pose_01.png",
+      "notes": "Cute Ava_Rin Series: Ava Rin Black Jacket Pose 01."
+    },
+    {
+      "id": "item-cute-ava-rin-cozy-reading-corner-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Ava Rin Cozy Reading Corner 01",
+      "displayText": "Ava Rin Cozy Reading Corner 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Cozy_Reading_Corner_01.png",
+      "notes": "Cute Ava_Rin Series: Ava Rin Cozy Reading Corner 01."
+    },
+    {
+      "id": "item-cute-ava-rin-happy-smile-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Ava Rin Happy Smile 01",
+      "displayText": "Ava Rin Happy Smile 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Happy_Smile_01.png",
+      "notes": "Cute Ava_Rin Series: Ava Rin Happy Smile 01."
+    },
+    {
+      "id": "item-cute-ava-rin-microphone-smile-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Ava Rin Microphone Smile 01",
+      "displayText": "Ava Rin Microphone Smile 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Microphone_Smile_01.png",
+      "notes": "Cute Ava_Rin Series: Ava Rin Microphone Smile 01."
+    },
+    {
+      "id": "item-cute-ava-rin-music-smile-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Ava Rin Music Smile 01",
+      "displayText": "Ava Rin Music Smile 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Music_Smile_01.png",
+      "notes": "Cute Ava_Rin Series: Ava Rin Music Smile 01."
+    },
+    {
+      "id": "item-cute-ava-rin-basketball-layup-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Basketball Layup Ava Rin 01",
+      "displayText": "Basketball Layup Ava Rin 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Basketball_Layup_Ava_Rin_01.png",
+      "notes": "Cute Ava_Rin Series: Basketball Layup Ava Rin 01."
+    },
+    {
+      "id": "item-cute-ava-rin-basketball-layup-inside-paint-01",
+      "categoryId": "cat-line",
+      "seriesId": "series-cute-ava-rin-series",
+      "title": "Basketball Layup Inside Paint 01",
+      "displayText": "Basketball Layup Inside Paint 01",
+      "status": "完成",
+      "image": "/images/line-stickers/Cute Ava_Rin Series/Basketball_Layup_Inside_Paint_01.png",
+      "notes": "Cute Ava_Rin Series: Basketball Layup Inside Paint 01."
     }
   ]
 };
