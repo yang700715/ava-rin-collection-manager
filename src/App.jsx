@@ -85,6 +85,11 @@ function cleanFileName(name) {
 
 const hiddenGalleryCategoryIds = new Set([]);
 
+const furinChanSeriesId = "series-furin-chan-gallery";
+const furinChanUploadPath = "public/images/furin-chan/furin-chan-gallery";
+const furinChanCopyrightNotice =
+  "風鈴醬系列作品由原創者保留所有權利。未經授權請勿轉載、重製、商用、改作或用於 AI 訓練；如需引用、分享或合作，請先取得創作者同意並標註來源。";
+
 export default function App() {
   const isLocalhost =
     window.location.hostname === "localhost" ||
@@ -215,6 +220,8 @@ export default function App() {
     search,
     statusFilter,
   ]);
+
+  const isFurinChanAlbum = selectedSeriesId === furinChanSeriesId;
 
   async function addCategory(event) {
     event.preventDefault();
@@ -745,6 +752,21 @@ export default function App() {
           )}
         </section>
 
+        {selectedSeriesId === furinChanSeriesId && (
+          <section className="copyrightPanel">
+            <div>
+              <p className="eyebrow">Copyright Notice</p>
+              <h3>風鈴醬系列版權聲明</h3>
+              <p>{furinChanCopyrightNotice}</p>
+            </div>
+            <div className="uploadHint">
+              <strong>照片資料夾</strong>
+              <code>{furinChanUploadPath}</code>
+              <span>目前可先把照片放在這裡；之後用管理模式新增作品時，也會寫入這個英文路徑。</span>
+            </div>
+          </section>
+        )}
+
         {isErPangDaiConcept && erPangDaiConceptItem && (
           <section className="conceptPage">
             <div className="conceptImage">
@@ -783,7 +805,34 @@ export default function App() {
           </section>
         )}
 
-        {!isErPangDaiConcept && (
+        {isFurinChanAlbum && (
+          <section className="albumView">
+            {visibleItems.length === 0 ? (
+              <div className="emptyAlbum">
+                <p className="eyebrow">Album</p>
+                <h3>風鈴醬相簿準備中</h3>
+                <p>
+                  目前還沒有登錄照片。把照片放進英文資料夾後，就可以同步進這個相簿。
+                </p>
+              </div>
+            ) : (
+              <div className="albumStrip">
+                {visibleItems.map((item, index) => (
+                  <button
+                    className="albumPhoto"
+                    key={item.id}
+                    onClick={() => setDetailItem(item)}
+                  >
+                    <img src={item.image} alt={item.title} />
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        {!isErPangDaiConcept && !isFurinChanAlbum && (
         <section className="toolbar">
           <input
             type="search"
@@ -804,7 +853,7 @@ export default function App() {
         </section>
         )}
 
-        {!isErPangDaiConcept && (
+        {!isErPangDaiConcept && !isFurinChanAlbum && (
         <section className="grid">
           {visibleItems.length === 0 ? (
             <div className="emptyCard">

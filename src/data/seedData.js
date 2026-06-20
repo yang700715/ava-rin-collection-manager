@@ -23,6 +23,12 @@ const seedData = {
       "name": "二胖呆原創",
       "slug": "二胖呆原創",
       "description": "二胖呆原創角色與作品資料，收錄角色設定、表情語氣與設計概念。"
+    },
+    {
+      "id": "cat-furin-chan",
+      "name": "風鈴醬作品集",
+      "slug": "furin-chan",
+      "description": "風鈴醬系列作品集，以相簿方式整理照片、插圖與後續收藏內容。"
     }
   ],
   "series": [
@@ -114,6 +120,13 @@ const seedData = {
       "name": "二胖呆 2026 FIFA World Cup",
       "slug": "er-pang-dai-2026 fifa world cup",
       "description": "二胖呆 2026 FIFA World Cup 主題收藏。"
+    },
+    {
+      "id": "series-furin-chan-gallery",
+      "categoryId": "cat-furin-chan",
+      "name": "風鈴醬系列",
+      "slug": "furin-chan-gallery",
+      "description": "風鈴醬系列相簿。照片尚未放入時，先保留空相簿與版權聲明；之後可將照片放入英文資料夾後再新增到作品集。"
     }
   ],
   "items": [
@@ -956,6 +969,36 @@ const seedData = {
       "status": "完成",
       "image": "/images/line-stickers/Cute Ava_Rin Series/Basketball_Layup_Inside_Paint_01.png",
       "notes": "Cute Ava_Rin Series: Basketball Layup Inside Paint 01."
+    },
+    {
+      "id": "item-furin-chan-windbell-chan-character-reference-01",
+      "categoryId": "cat-furin-chan",
+      "seriesId": "series-furin-chan-gallery",
+      "title": "Windbell Chan Character Reference 01",
+      "displayText": "Windbell Chan Character Reference 01",
+      "status": "完成",
+      "image": "/images/furin-chan/furin-chan-gallery/Windbell_Chan_Character_Reference_01.png",
+      "notes": "風鈴醬系列：Windbell Chan Character Reference 01。"
+    },
+    {
+      "id": "item-furin-chan-windbell-chan-forced-to-grow-up-01",
+      "categoryId": "cat-furin-chan",
+      "seriesId": "series-furin-chan-gallery",
+      "title": "Windbell Chan Forced To Grow Up 01",
+      "displayText": "Windbell Chan Forced To Grow Up 01",
+      "status": "完成",
+      "image": "/images/furin-chan/furin-chan-gallery/Windbell_Chan_Forced_To_Grow_Up_01.png",
+      "notes": "風鈴醬系列：Windbell Chan Forced To Grow Up 01。"
+    },
+    {
+      "id": "item-furin-chan-windbell-chan-wind-rising-moment-01",
+      "categoryId": "cat-furin-chan",
+      "seriesId": "series-furin-chan-gallery",
+      "title": "Windbell Chan Wind Rising Moment 01",
+      "displayText": "Windbell Chan Wind Rising Moment 01",
+      "status": "完成",
+      "image": "/images/furin-chan/furin-chan-gallery/Windbell_Chan_Wind_Rising_Moment_01.png",
+      "notes": "風鈴醬系列：Windbell Chan Wind Rising Moment 01。"
     }
   ]
 };

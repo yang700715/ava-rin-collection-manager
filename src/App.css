@@ -345,6 +345,117 @@ button.small {
   justify-content: flex-end;
 }
 
+.copyrightPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.45fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 22px;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 34px rgba(74, 48, 31, 0.08);
+}
+
+.copyrightPanel h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.copyrightPanel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.uploadHint {
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  padding: 16px;
+  background: rgba(255, 241, 228, 0.66);
+  border: 1px dashed var(--line);
+  border-radius: 18px;
+}
+
+.uploadHint code {
+  overflow-wrap: anywhere;
+  color: var(--accent-dark);
+  font-weight: 900;
+}
+
+.uploadHint span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.albumView {
+  display: grid;
+  gap: 18px;
+}
+
+.albumStrip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.albumPhoto {
+  position: relative;
+  display: block;
+  min-height: 240px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(74, 48, 31, 0.08);
+}
+
+.albumPhoto img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.albumPhoto span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.emptyAlbum {
+  padding: 34px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.emptyAlbum h3 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.emptyAlbum p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
 .toolbar {
   display: grid;
   grid-template-columns: 1fr 180px;
@@ -703,6 +814,7 @@ textarea:focus {
   .conceptImage {
     min-height: 420px;
   }
+
 }
 
 @media (max-width: 760px) {
@@ -722,6 +834,7 @@ textarea:focus {
 
   .toolbar,
   .grid,
+  .copyrightPanel,
   .formGrid {
     grid-template-columns: 1fr;
   }
@@ -733,4 +846,5 @@ textarea:focus {
   .modalFooter button {
     width: 100%;
   }
+
 }
