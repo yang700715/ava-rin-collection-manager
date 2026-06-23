@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DrawMachine from "./draw/DrawMachine";
 
 const ACCOUNTS = [
   {
@@ -18,9 +19,10 @@ export default function AuthGate({ children }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPublicDrawMachine, setShowPublicDrawMachine] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = (event) => {
+    event.preventDefault();
 
     const matchedAccount = ACCOUNTS.find(
       (account) => account.username === username && account.password === password
@@ -33,7 +35,7 @@ export default function AuthGate({ children }) {
       return;
     }
 
-    setError("帳號或密碼錯誤");
+    setError("帳號或密碼不正確。");
   };
 
   const handleLogout = () => {
@@ -44,18 +46,29 @@ export default function AuthGate({ children }) {
   };
 
   if (!isAuthed) {
+    if (showPublicDrawMachine) {
+      return (
+        <div className="publicDrawPage">
+          <DrawMachine
+            backLabel="返回登入頁"
+            onBack={() => setShowPublicDrawMachine(false)}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="authPage">
         <form className="authPanel" onSubmit={handleLogin}>
           <div className="authBadge">Private Archive</div>
 
-          <h1 className="authTitle">Ava_凜 作品庫</h1>
-          <p className="authSubtitle">私人收藏展示｜請先登入</p>
+          <h1 className="authTitle">Ava_凜作品庫</h1>
+          <p className="authSubtitle">登入後可瀏覽作品庫與使用收藏工具。</p>
 
           <input
             className="authInput"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
             placeholder="帳號"
             autoComplete="username"
           />
@@ -63,7 +76,7 @@ export default function AuthGate({ children }) {
           <input
             className="authInput"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             placeholder="密碼"
             type="password"
             autoComplete="current-password"
@@ -76,9 +89,22 @@ export default function AuthGate({ children }) {
           </button>
 
           <p className="authNote">
-            此頁為簡易前端保護，適合防止一般瀏覽。
+            這是本機私人作品庫，登入狀態沿用 ava-auth。
           </p>
         </form>
+
+        <aside className="drawEntryCard">
+          <p className="drawEntryKicker">Local Bonus Tool</p>
+          <h2>小小源抽賞機</h2>
+          <p>免 API・不燒錢・純瀏覽器抽獎</p>
+          <button
+            type="button"
+            className="ghost"
+            onClick={() => setShowPublicDrawMachine(true)}
+          >
+            前往抽賞機
+          </button>
+        </aside>
       </div>
     );
   }

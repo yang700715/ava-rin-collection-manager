@@ -1,4 +1,5 @@
 import AuthGate from "./components/AuthGate";
+import DrawMachine from "./components/draw/DrawMachine";
 import { useEffect, useMemo, useState } from "react";
 
 import "./App.css";
@@ -115,6 +116,7 @@ export default function App() {
   const [detailItem, setDetailItem] = useState(null);
   const [editingItem, setEditingItem] = useState(null);
   const [apiReady, setApiReady] = useState(!isAdmin ? true : false);
+  const [currentView, setCurrentView] = useState("gallery");
 
   useEffect(() => {
     if (!isAdmin) {
@@ -566,6 +568,21 @@ export default function App() {
           </div>
         </div>
 
+        <div className="viewSwitch">
+          <button
+            className={currentView === "gallery" ? "active" : ""}
+            onClick={() => setCurrentView("gallery")}
+          >
+            作品庫
+          </button>
+          <button
+            className={currentView === "draw" ? "active" : ""}
+            onClick={() => setCurrentView("draw")}
+          >
+            小小源抽賞機
+          </button>
+        </div>
+
         {isAdmin && (
           <div className="sideActions">
             <button onClick={() => setModal("category")}>＋ 新增主分類</button>
@@ -702,6 +719,10 @@ export default function App() {
       </aside>
 
       <main className="main">
+        {currentView === "draw" ? (
+          <DrawMachine onBack={() => setCurrentView("gallery")} />
+        ) : (
+          <>
         <header className="topbar">
           <div>
             <p className="eyebrow">
@@ -918,6 +939,8 @@ export default function App() {
             ))
           )}
         </section>
+        )}
+          </>
         )}
       </main>
 
