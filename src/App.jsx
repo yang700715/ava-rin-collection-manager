@@ -1,4 +1,3 @@
-import AuthGate from "./components/AuthGate";
 import DrawMachine from "./components/draw/DrawMachine";
 import { useEffect, useMemo, useState } from "react";
 
@@ -517,7 +516,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `ava-rin-collection-${new Date()
+    link.download = `xxy-collection-${new Date()
       .toISOString()
       .slice(0, 10)}.json`;
     link.click();
@@ -557,13 +556,12 @@ export default function App() {
   }
 
   return (
-    <AuthGate>
     <div className="app">
       <aside className="sidebar">
         <div className="brand">
-          <div className="brandMark">凜</div>
+          <div className="brandMark">源</div>
           <div>
-            <h1>Ava_凜作品庫</h1>
+            <h1>小小源作品庫</h1>
             <p>{isAdmin ? "Local Admin v0.6ee" : "Gallery Mode v0.6ee"}</p>
           </div>
         </div>
@@ -726,7 +724,7 @@ export default function App() {
         <header className="topbar">
           <div>
             <p className="eyebrow">
-              {isAdmin ? "Local File Writer" : "Ava_凜 Works Gallery"}
+              {isAdmin ? "Local File Writer" : "小小源 Works Gallery"}
             </p>
             <h2>分類 ＞ 系列 ＞ 貼圖作品</h2>
           </div>
@@ -857,7 +855,7 @@ export default function App() {
         <section className="toolbar">
           <input
             type="search"
-            placeholder="搜尋貼圖名稱、文字、備註，例如：加班中、工作篇、Ava"
+            placeholder="搜尋貼圖名稱、文字、備註，例如：加班中、工作篇、小小源"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
@@ -892,7 +890,7 @@ export default function App() {
                   {item.image ? (
                     <img src={item.image} alt={item.title} />
                   ) : (
-                    <div className="placeholder">凜</div>
+                    <div className="placeholder">源</div>
                   )}
                 </div>
 
@@ -986,7 +984,7 @@ export default function App() {
               <input
                 name="name"
                 required
-                placeholder="例如：Ava_凜 工作篇 1"
+                placeholder="例如：小小源 工作篇 1"
               />
             </label>
             <label>
@@ -1028,7 +1026,7 @@ export default function App() {
               {detailItem.image ? (
                 <img src={detailItem.image} alt={detailItem.title} />
               ) : (
-                <div className="placeholder">凜</div>
+                <div className="placeholder">源</div>
               )}
             </div>
             <div>
@@ -1052,7 +1050,6 @@ export default function App() {
         </Modal>
       )}
     </div>
-    </AuthGate>
   );
 }
 
@@ -1175,7 +1172,7 @@ function AddItemModal({
           <textarea
             name="notes"
             rows="4"
-            placeholder="例如：文字清楚，但角色臉可以更像 Ava_凜。"
+            placeholder="例如：文字清楚，但角色臉可以更像 小小源。"
           />
         </label>
 
@@ -1259,7 +1256,7 @@ function EditItemModal({ data, editingItem, onClose, onSubmit }) {
             name="notes"
             rows="4"
             defaultValue={editingItem.notes}
-            placeholder="例如：文字清楚，但角色臉可以更像 Ava_凜。"
+            placeholder="例如：文字清楚，但角色臉可以更像 小小源。"
           />
         </label>
 

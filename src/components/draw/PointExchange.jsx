@@ -10,7 +10,7 @@ import TicketRedemption from "./TicketRedemption";
 const giftReasons = [
   "當月斗內最高者",
   "當月仍是訂閱會員",
-  "Ava 評選",
+  "小小源評選",
   "特殊活動補發",
   "手動贈點",
 ];

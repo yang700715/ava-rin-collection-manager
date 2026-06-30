@@ -2,21 +2,9 @@ const seedData = {
   "categories": [
     {
       "id": "cat-line",
-      "name": "Ava_凜 原創",
-      "slug": "line-stickers",
-      "description": "Ava_凜 原創作品分類，收錄以角色形象、日常語氣與直播情境延伸設計的 LINE 貼圖作品。"
-    },
-    {
-      "id": "cat-mq7rgc1s-tbdbwm",
-      "name": "Ava_凜 二創",
-      "slug": "二創模型",
-      "description": "Ava_凜 二創作品分類，收錄模型、公仔與相關衍生創作紀錄。"
-    },
-    {
-      "id": "cat-ava-rin-merch",
-      "name": "Ava_凜 周邊",
-      "slug": "Ava_凜 周邊",
-      "description": "Ava_凜 周邊概念作品，收錄角色延伸的服裝、日常小物與視覺設計概念。"
+      "name": "Original",
+      "slug": "original",
+      "description": "Original LINE sticker works and character-based designs."
     },
     {
       "id": "cat-er-pang-dai-original",
@@ -33,65 +21,65 @@ const seedData = {
   ],
   "series": [
     {
-      "id": "series-ava-rin-line-stickers",
+      "id": "series-xxy-line-stickers",
       "categoryId": "cat-line",
-      "name": "Ava_凜 Line貼圖",
-      "slug": "Ava_凜-Line貼圖",
-      "description": "Ava_凜 原創 LINE 貼圖系列，收錄日常生活、直播中、穿搭與工作情境等角色貼圖設計。"
+      "name": "LINE Stickers",
+      "slug": "line-stickers",
+      "description": "Original LINE sticker collections for daily life, live stream, outfit, and work moments."
     },
     {
-      "id": "series-cute-ava-rin-series",
+      "id": "series-xxy-cute",
       "categoryId": "cat-line",
-      "parentSeriesId": "series-ava-rin-line-stickers",
-      "name": "Cute Ava_Rin Series",
-      "slug": "Cute-Ava-Rin-Series",
-      "description": "A cute Ava_Rin line sticker series with warm, stream-themed moments."
+      "parentSeriesId": "series-xxy-line-stickers",
+      "name": "Cute Series",
+      "slug": "cute-series",
+      "description": "A cute LINE sticker series with warm, stream-themed moments."
     },
     {
-      "id": "series-ava-rin-outfit-1",
+      "id": "series-xxy-outfit-1",
       "categoryId": "cat-line",
-      "parentSeriesId": "series-ava-rin-line-stickers",
-      "name": "Ava 凜 穿搭篇 1",
-      "slug": "Ava_凜-穿搭篇-1",
-      "description": "Ava_凜 Line貼圖中的穿搭篇，收錄以日常穿搭、表情語氣與角色風格為主題的貼圖作品。"
+      "parentSeriesId": "series-xxy-line-stickers",
+      "name": "Outfit Vol. 1",
+      "slug": "outfit-vol-1",
+      "description": "Outfit-themed stickers focused on daily styling, expressions, and character tone."
     },
     {
-      "id": "series-ava-rin-live-1",
+      "id": "series-xxy-live-1",
       "categoryId": "cat-line",
-      "parentSeriesId": "series-ava-rin-line-stickers",
-      "name": "Ava 凜 直播中 1",
-      "slug": "Ava_凜-直播中篇-1",
-      "description": "Ava_凜 Line貼圖中的直播中篇，收錄直播、耳機、麥克風與互動情境相關貼圖作品。"
+      "parentSeriesId": "series-xxy-line-stickers",
+      "name": "Live Stream Vol. 1",
+      "slug": "live-stream-vol-1",
+      "description": "Live stream stickers featuring headsets, microphones, and interactive moments."
     },
     {
-      "id": "series-ava-rin-live-records",
+      "id": "series-xxy-live-records",
       "categoryId": "cat-line",
-      "parentSeriesId": "series-ava-rin-line-stickers",
-      "name": "Ava_凜 直播紀錄",
-      "slug": "Ava_凜-直播紀錄",
-      "description": "Ava_凜 Line貼圖中的直播紀錄分類，收錄依照直播日期與主題整理的貼圖作品。"
+      "parentSeriesId": "series-xxy-line-stickers",
+      "name": "Live Records",
+      "slug": "live-records",
+      "description": "Sticker works organized by live stream dates and themes."
     },
     {
-      "id": "series-ava-rin-daily-1",
+      "id": "series-xxy-daily-1",
       "categoryId": "cat-line",
-      "parentSeriesId": "series-ava-rin-line-stickers",
-      "name": "Ava 凜 日常生活篇 1",
-      "slug": "Ava_凜-日常生活篇-1",
-      "description": "Ava_凜 Line貼圖中的日常生活篇，收錄問候、回覆、鼓勵與日常情緒相關貼圖作品。"
+      "parentSeriesId": "series-xxy-line-stickers",
+      "name": "Daily Life Vol. 1",
+      "slug": "daily-life-vol-1",
+      "description": "Daily life stickers for greetings, replies, encouragement, and emotions."
     },
     {
       "id": "series-mq7rimcn-pjlbku",
-      "categoryId": "cat-mq7rgc1s-tbdbwm",
-      "name": "Ava_凜 模型公仔",
+      "categoryId": "cat-line",
+      "name": "Look-up Figures",
       "slug": "Look-up",
-      "description": "Ava_凜 模型公仔系列，收錄二創模型、公仔與造型概念作品。"
+      "description": "Fan-made figure and model concept works."
     },
     {
-      "id": "series-ava-rin-t-shirt",
-      "categoryId": "cat-ava-rin-merch",
-      "name": "T-shirt",
-      "slug": "T-shirt",
-      "description": "Ava_凜 周邊概念中的 T-shirt 系列，收錄以 Ava_凜 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
+      "id": "series-xxy-t-shirt",
+      "categoryId": "cat-line",
+      "name": "T-shirts",
+      "slug": "t-shirts",
+      "description": "T-shirt concept designs inspired by character styling and daily outfit ideas. These are display and creation records, not official products."
     },
     {
       "id": "series-er-pang-dai-design-concept",
@@ -132,7 +120,7 @@ const seedData = {
   "items": [
     {
       "id": "item-mq7rmuvf-uzxfj2",
-      "categoryId": "cat-mq7rgc1s-tbdbwm",
+      "categoryId": "cat-line",
       "seriesId": "series-mq7rimcn-pjlbku",
       "title": "淡紫色短版針織",
       "displayText": "淡紫色短版針織",
@@ -143,9 +131,9 @@ const seedData = {
     {
       "id": "item-mq7qehpp-vu2px5",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
-      "title": "00 首圖｜Ava 凜 穿搭篇 1",
-      "displayText": "00 首圖｜Ava 凜 穿搭篇 1",
+      "seriesId": "series-xxy-outfit-1",
+      "title": "00 首圖｜小小源 穿搭篇 1",
+      "displayText": "00 首圖｜小小源 穿搭篇 1",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-outfit-1/00-cover-ava-rin-outfit-1.png",
       "notes": ""
@@ -153,7 +141,7 @@ const seedData = {
     {
       "id": "item-mq7qehpq-5xldpa",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "01 哈囉",
       "displayText": "01 哈囉",
       "status": "完成",
@@ -163,7 +151,7 @@ const seedData = {
     {
       "id": "item-mq7qehpr-35aql2",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "02 謝謝你",
       "displayText": "02 謝謝你",
       "status": "完成",
@@ -173,7 +161,7 @@ const seedData = {
     {
       "id": "item-mq7qehpt-el9ens",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "03 辛苦了",
       "displayText": "03 辛苦了",
       "status": "完成",
@@ -183,7 +171,7 @@ const seedData = {
     {
       "id": "item-mq7qehpu-1g0bip",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "04 OK！",
       "displayText": "04 OK！",
       "status": "完成",
@@ -193,7 +181,7 @@ const seedData = {
     {
       "id": "item-mq7qehpv-w0f3fn",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "05 太好了！｜新版",
       "displayText": "05 太好了！｜新版",
       "status": "完成",
@@ -203,7 +191,7 @@ const seedData = {
     {
       "id": "item-mq7qehpw-zv0p4y",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "06 抱歉啦",
       "displayText": "06 抱歉啦",
       "status": "完成",
@@ -213,7 +201,7 @@ const seedData = {
     {
       "id": "item-mq7qehpw-0qpx9z",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "07 加油！",
       "displayText": "07 加油！",
       "status": "完成",
@@ -223,7 +211,7 @@ const seedData = {
     {
       "id": "item-mq7qehpx-ewz3mh",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "08 哼！",
       "displayText": "08 哼！",
       "status": "完成",
@@ -233,7 +221,7 @@ const seedData = {
     {
       "id": "item-mq7qehpy-vvtviy",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "09 累了",
       "displayText": "09 累了",
       "status": "完成",
@@ -243,7 +231,7 @@ const seedData = {
     {
       "id": "item-mq7qehpz-6x3dnh",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-outfit-1",
+      "seriesId": "series-xxy-outfit-1",
       "title": "10 晚安",
       "displayText": "10 晚安",
       "status": "完成",
@@ -253,7 +241,7 @@ const seedData = {
     {
       "id": "item-mq7kxhtw-mss5dh",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "01 開播中 白T耳機麥克風",
       "displayText": "01 開播中 白T耳機麥克風",
       "status": "完成",
@@ -263,7 +251,7 @@ const seedData = {
     {
       "id": "item-mq7kxhtx-o9lra6",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "02 直播中 白襯衫麥克風",
       "displayText": "02 直播中 白襯衫麥克風",
       "status": "完成",
@@ -273,7 +261,7 @@ const seedData = {
     {
       "id": "item-mq7kxhtz-cstvh3",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "03 直播中 白襯衫耳機水瓶",
       "displayText": "03 直播中 白襯衫耳機水瓶",
       "status": "完成",
@@ -283,7 +271,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu0-pokjbl",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "04 直播中 黑T耳機麥克風",
       "displayText": "04 直播中 黑T耳機麥克風",
       "status": "完成",
@@ -293,7 +281,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu1-2j95dz",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "05 直播中 白T生菜桌面",
       "displayText": "05 直播中 白T生菜桌面",
       "status": "完成",
@@ -303,7 +291,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu2-xa976h",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "06 欸 白襯衫摸頭疑惑",
       "displayText": "06 欸 白襯衫摸頭疑惑",
       "status": "完成",
@@ -313,7 +301,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu3-1jgkux",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "07 思考中 米色外套麥克風",
       "displayText": "07 思考中 米色外套麥克風",
       "status": "完成",
@@ -323,7 +311,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu4-n23ifj",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "08 黑帽T麥克風",
       "displayText": "08 黑帽T麥克風",
       "status": "完成",
@@ -333,7 +321,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu5-tvv8q3",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "09 紅T側臉Q版",
       "displayText": "09 紅T側臉Q版",
       "status": "完成",
@@ -343,7 +331,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu7-4hh84a",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "10 紅T側臉Q版桌面",
       "displayText": "10 紅T側臉Q版桌面",
       "status": "完成",
@@ -353,7 +341,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu8-nle4gr",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "11 紅T嘟嘴 Q版桌面",
       "displayText": "11 紅T嘟嘴 Q版桌面",
       "status": "完成",
@@ -363,7 +351,7 @@ const seedData = {
     {
       "id": "item-mq7kxhu9-akl7wp",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "12 戶外白T撥頭髮",
       "displayText": "12 戶外白T撥頭髮",
       "status": "完成",
@@ -373,7 +361,7 @@ const seedData = {
     {
       "id": "item-mq7kxhua-nahhhu",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "13 白T拿水瓶",
       "displayText": "13 白T拿水瓶",
       "status": "完成",
@@ -383,7 +371,7 @@ const seedData = {
     {
       "id": "item-mq7kxhub-vqbb5x",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-1",
+      "seriesId": "series-xxy-live-1",
       "title": "14 粉色上衣拿水瓶",
       "displayText": "14 粉色上衣拿水瓶",
       "status": "完成",
@@ -391,31 +379,31 @@ const seedData = {
       "notes": ""
     },
     {
-      "id": "item-20260614-racing-ava-first-place",
+      "id": "item-20260614-racing-xxy-first-place",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-records",
-      "title": "20260614 飆車Ava｜一定要第一名",
-      "displayText": "20260614 飆車Ava｜一定要第一名",
+      "seriesId": "series-xxy-live-records",
+      "title": "20260614 飆車小小源｜一定要第一名",
+      "displayText": "20260614 飆車小小源｜一定要第一名",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-live-records/20260614-racing-ava-first-place.png",
-      "notes": "Ava_凜 直播紀錄：20260614 飆車Ava｜一定要第一名。"
+      "notes": "小小源 直播紀錄：20260614 飆車小小源｜一定要第一名。"
     },
     {
-      "id": "item-meccha-chameleon-ava-hide-and-seek",
+      "id": "item-meccha-chameleon-xxy-hide-and-seek",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-records",
-      "title": "Meccha Chameleon Ava｜一起躲貓貓",
-      "displayText": "Meccha Chameleon Ava｜一起躲貓貓",
+      "seriesId": "series-xxy-live-records",
+      "title": "Meccha Chameleon 小小源｜一起躲貓貓",
+      "displayText": "Meccha Chameleon 小小源｜一起躲貓貓",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-live-records/meccha-chameleon-ava-hide-and-seek.png",
-      "notes": "Ava_凜 直播紀錄：Meccha Chameleon Ava｜一起躲貓貓。"
+      "notes": "小小源 直播紀錄：Meccha Chameleon 小小源｜一起躲貓貓。"
     },
     {
       "id": "item-mq7kvvlz-g0x2r0",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
-      "title": "01 Ava 凜 日常生活篇 1",
-      "displayText": "01 Ava 凜 日常生活篇 1",
+      "seriesId": "series-xxy-daily-1",
+      "title": "01 小小源 日常生活篇 1",
+      "displayText": "01 小小源 日常生活篇 1",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-daily-life-1/01-ava-rin-daily-life-1.png",
       "notes": ""
@@ -423,7 +411,7 @@ const seedData = {
     {
       "id": "item-mq7kvvlz-8kt4mr",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "02 哈囉",
       "displayText": "02 哈囉",
       "status": "完成",
@@ -433,7 +421,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm0-gvp1iz",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "03 讚啦",
       "displayText": "03 讚啦",
       "status": "完成",
@@ -443,7 +431,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm1-psvxkj",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "04 謝謝",
       "displayText": "04 謝謝",
       "status": "完成",
@@ -453,7 +441,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm2-wgrau8",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "05 晚安",
       "displayText": "05 晚安",
       "status": "完成",
@@ -463,7 +451,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm2-daxooo",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "06 好害羞",
       "displayText": "06 好害羞",
       "status": "完成",
@@ -473,7 +461,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm3-9fglzv",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "07 加油",
       "displayText": "07 加油",
       "status": "完成",
@@ -483,7 +471,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm4-168pka",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "08 收到",
       "displayText": "08 收到",
       "status": "完成",
@@ -493,7 +481,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm4-wbpjka",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "09 愛你喔",
       "displayText": "09 愛你喔",
       "status": "完成",
@@ -503,7 +491,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm5-85o113",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "10 等一下",
       "displayText": "10 等一下",
       "status": "完成",
@@ -513,7 +501,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm5-utgbq1",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "11 抱歉",
       "displayText": "11 抱歉",
       "status": "完成",
@@ -523,7 +511,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm6-gfhdwk",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "12 生氣氣",
       "displayText": "12 生氣氣",
       "status": "完成",
@@ -533,7 +521,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm7-fd8l8i",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "13 無語",
       "displayText": "13 無語",
       "status": "完成",
@@ -543,7 +531,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm7-2b5bqw",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "14 哈哈哈",
       "displayText": "14 哈哈哈",
       "status": "完成",
@@ -553,7 +541,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm8-kski6w",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "15 辛苦了",
       "displayText": "15 辛苦了",
       "status": "完成",
@@ -563,7 +551,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm8-ykeive",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "16 沒問題",
       "displayText": "16 沒問題",
       "status": "完成",
@@ -573,7 +561,7 @@ const seedData = {
     {
       "id": "item-mq7kvvm9-78w6mf",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-daily-1",
+      "seriesId": "series-xxy-daily-1",
       "title": "17 哇",
       "displayText": "17 哇",
       "status": "完成",
@@ -581,174 +569,174 @@ const seedData = {
       "notes": ""
     },
     {
-      "id": "ava-rin-work-1-001",
+      "id": "xxy-work-1-001",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
-      "title": "01 Ava 凜 工作篇 1",
-      "displayText": "01 Ava 凜 工作篇 1",
+      "seriesId": "series-xxy-line-stickers",
+      "title": "01 小小源 工作篇 1",
+      "displayText": "01 小小源 工作篇 1",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/01-ava-rin-work-1.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-002",
+      "id": "xxy-work-1-002",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "02 出發",
       "displayText": "02 出發",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/02-departure.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-003",
+      "id": "xxy-work-1-003",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "03 開工啦",
       "displayText": "03 開工啦",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/03-start-working.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-004",
+      "id": "xxy-work-1-004",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "04 收到",
       "displayText": "04 收到",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/04-received.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-005",
+      "id": "xxy-work-1-005",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "05 馬上處理",
       "displayText": "05 馬上處理",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/05-handling-now.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-006",
+      "id": "xxy-work-1-006",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "06 等我一下",
       "displayText": "06 等我一下",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/06-wait-a-moment.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-007",
+      "id": "xxy-work-1-007",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "07 腦袋炸炸",
       "displayText": "07 腦袋炸炸",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/07-brain-fried.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-008",
+      "id": "xxy-work-1-008",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "08 好累",
       "displayText": "08 好累",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/08-so-tired.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-009",
+      "id": "xxy-work-1-009",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "09 忙碌中",
       "displayText": "09 忙碌中",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/09-busy.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-010",
+      "id": "xxy-work-1-010",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "10 先喝咖啡",
       "displayText": "10 先喝咖啡",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/10-coffee-first.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-011",
+      "id": "xxy-work-1-011",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "11 加班中",
       "displayText": "11 加班中",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/11-working-overtime.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-012",
+      "id": "xxy-work-1-012",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "12 我盡力了",
       "displayText": "12 我盡力了",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/12-i-did-my-best.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-013",
+      "id": "xxy-work-1-013",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "13 辛苦了",
       "displayText": "13 辛苦了",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/13-good-work.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-014",
+      "id": "xxy-work-1-014",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "14 會議中",
       "displayText": "14 會議中",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/14-in-meeting.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-015",
+      "id": "xxy-work-1-015",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "15 下班啦",
       "displayText": "15 下班啦",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/15-off-work.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-016",
+      "id": "xxy-work-1-016",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "16 明天再說",
       "displayText": "16 明天再說",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/16-talk-tomorrow.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
-      "id": "ava-rin-work-1-017",
+      "id": "xxy-work-1-017",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-line-stickers",
+      "seriesId": "series-xxy-line-stickers",
       "title": "17 今天先這樣",
       "displayText": "17 今天先這樣",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-work-1/17-thats-all-for-today.png",
-      "notes": "Ava_凜 工作篇 1。"
+      "notes": "小小源 工作篇 1。"
     },
     {
       "id": "item-er-pang-dai-hooky",
@@ -774,61 +762,61 @@ const seedData = {
       "id": "item-er-pang-dai-special-01",
       "categoryId": "cat-er-pang-dai-original",
       "seriesId": "series-er-pang-dai-special",
-      "title": "01 Ava 媽媽我愛妳",
-      "displayText": "二胖呆｜Ava 媽媽我愛妳",
+      "title": "01 小小源 媽媽我愛妳",
+      "displayText": "二胖呆｜小小源 媽媽我愛妳",
       "status": "完成",
       "image": "/images/er-pang-dai-original/er-pang-dai-special/01-ava-mama-i-love-you.png",
-      "notes": "二胖呆在舞台旁邊狂比愛心，旁邊有一束一束康乃馨，主題是「Ava 媽媽我愛妳」。這張屬於二胖呆原創的應援亂入／特別篇作品，帶有可愛、誇張、直播互動式的幽默感。"
+      "notes": "二胖呆在舞台旁邊狂比愛心，旁邊有一束一束康乃馨，主題是「小小源 媽媽我愛妳」。這張屬於二胖呆原創的應援亂入／特別篇作品，帶有可愛、誇張、直播互動式的幽默感。"
     },
     {
-      "id": "item-ava-rin-t-shirt-black-01",
+      "id": "item-xxy-t-shirt-black-01",
       "title": "01 黑色 T-shirt",
       "displayText": "黑色 T-shirt",
       "image": "/images/ava-rin-merch/T-shirt/Black T-shirt/Black T-shirt 01.png",
-      "categoryId": "cat-ava-rin-merch",
-      "seriesId": "series-ava-rin-t-shirt",
+      "categoryId": "cat-line",
+      "seriesId": "series-xxy-t-shirt",
       "status": "完成",
-      "notes": "Ava_凜 周邊概念中的 T-shirt 系列，收錄以 Ava_凜 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
+      "notes": "周邊概念中的 T-shirt 系列，收錄以 小小源 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
     },
     {
-      "id": "item-ava-rin-t-shirt-white-02",
+      "id": "item-xxy-t-shirt-white-02",
       "title": "02 白 T-shirt",
       "displayText": "白 T-shirt",
       "image": "/images/ava-rin-merch/T-shirt/White T-shirt/White T-shirt 01.png",
-      "categoryId": "cat-ava-rin-merch",
-      "seriesId": "series-ava-rin-t-shirt",
+      "categoryId": "cat-line",
+      "seriesId": "series-xxy-t-shirt",
       "status": "完成",
-      "notes": "Ava_凜 周邊概念中的 T-shirt 系列，收錄以 Ava_凜 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
+      "notes": "周邊概念中的 T-shirt 系列，收錄以 小小源 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
     },
     {
-      "id": "item-ava-rin-t-shirt-red-03",
+      "id": "item-xxy-t-shirt-red-03",
       "title": "03 紅 T-shirt",
       "displayText": "紅 T-shirt",
       "image": "/images/ava-rin-merch/T-shirt/Red T-shirt/Red T-shirt 01.png",
-      "categoryId": "cat-ava-rin-merch",
-      "seriesId": "series-ava-rin-t-shirt",
+      "categoryId": "cat-line",
+      "seriesId": "series-xxy-t-shirt",
       "status": "完成",
-      "notes": "Ava_凜 周邊概念中的 T-shirt 系列，收錄以 Ava_凜 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
+      "notes": "周邊概念中的 T-shirt 系列，收錄以 小小源 形象、日常穿搭與角色風格為靈感設計的服裝概念圖。此系列屬於展示與創作紀錄用途，非正式販售商品。"
     },
     {
-      "id": "item-ava-rin-t-shirt-pink-04",
+      "id": "item-xxy-t-shirt-pink-04",
       "title": "Subscriber Lv3 Guardian Edition 01",
       "displayText": "Pink T-shirt",
       "image": "/images/ava-rin-merch/T-shirt/Pink T-shirt/Subscriber Lv3 Guardian Edition 01.png",
-      "categoryId": "cat-ava-rin-merch",
-      "seriesId": "series-ava-rin-t-shirt",
+      "categoryId": "cat-line",
+      "seriesId": "series-xxy-t-shirt",
       "status": "完成",
-      "notes": "Ava_凜 T 訂閱者 Lv3 Guardian 專屬紀念款，粉色 #FFB6C1，含 Guardian 臂章設計。"
+      "notes": "小小源 T 訂閱者 Lv3 Guardian 專屬紀念款，粉色 #FFB6C1，含 Guardian 臂章設計。"
     },
     {
-      "id": "item-20260609-backrooms-ava-adventure",
+      "id": "item-20260609-backrooms-xxy-adventure",
       "categoryId": "cat-line",
-      "seriesId": "series-ava-rin-live-records",
-      "title": "20260609 Backrooms Ava｜後室探險",
-      "displayText": "20260609 Backrooms Ava｜後室探險",
+      "seriesId": "series-xxy-live-records",
+      "title": "20260609 Backrooms 小小源｜後室探險",
+      "displayText": "20260609 Backrooms 小小源｜後室探險",
       "status": "完成",
       "image": "/images/line-stickers/ava-rin-live-records/20260609 Backrooms Ava｜後室探險.png",
-      "notes": "Ava_凜 直播紀錄：20260609 Backrooms Ava｜後室探險。"
+      "notes": "小小源 直播紀錄：20260609 Backrooms 小小源｜後室探險。"
     },
     {
       "id": "item-er-pang-dai-2026-fifa-world-cup-01",
@@ -851,124 +839,124 @@ const seedData = {
       "notes": "二胖呆 2026 FIFA World Cup 主題收藏。"
     },
     {
-      "id": "item-cute-ava-rin-warm-stream-desk-smile-01",
+      "id": "item-xxy-cute-warm-stream-desk-smile-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
+      "seriesId": "series-xxy-cute",
       "title": "Warm Stream Desk Smile 01",
       "displayText": "Warm Stream Desk Smile 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Cute_Ava_Rin_Series_Warm_Stream_Desk_Smile_01.png",
-      "notes": "Cute Ava_Rin Series: Warm Stream Desk Smile 01."
+      "image": "/images/line-stickers/小小源系列/小小源系列_Warm_Stream_Desk_Smile_01.png",
+      "notes": "小小源系列: Warm Stream Desk Smile 01."
     },
     {
-      "id": "item-cute-ava-rin-iceland-glacier-with-mom-01",
+      "id": "item-xxy-cute-iceland-glacier-with-mom-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
+      "seriesId": "series-xxy-cute",
       "title": "Iceland Glacier With Mom 01",
       "displayText": "Iceland Glacier With Mom 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Iceland_Glacier_With_Mom_01.png",
-      "notes": "Cute Ava_Rin Series: Iceland Glacier With Mom 01."
+      "image": "/images/line-stickers/小小源系列/Iceland_Glacier_With_Mom_01.png",
+      "notes": "小小源系列: Iceland Glacier With Mom 01."
     },
     {
-      "id": "item-cute-ava-rin-iceland-winter-coast-portrait-01",
+      "id": "item-xxy-cute-iceland-winter-coast-portrait-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
+      "seriesId": "series-xxy-cute",
       "title": "Iceland Winter Coast Portrait 01",
       "displayText": "Iceland Winter Coast Portrait 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/iceland-winter-coast-portrait-01.png",
-      "notes": "Cute Ava_Rin Series: Iceland Winter Coast Portrait 01."
+      "image": "/images/line-stickers/小小源系列/iceland-winter-coast-portrait-01.png",
+      "notes": "小小源系列: Iceland Winter Coast Portrait 01."
     },
     {
-      "id": "item-cute-ava-rin-gemini-creator-academy-taichung-01",
+      "id": "item-xxy-cute-gemini-creator-academy-taichung-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
+      "seriesId": "series-xxy-cute",
       "title": "Gemini Creator Academy Taichung 01",
       "displayText": "Gemini Creator Academy Taichung 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Gemini_Creator_Academy_Taichung_01.png",
-      "notes": "Cute Ava_Rin Series: Gemini Creator Academy Taichung 01."
+      "image": "/images/line-stickers/小小源系列/Gemini_Creator_Academy_Taichung_01.png",
+      "notes": "小小源系列: Gemini Creator Academy Taichung 01."
     },
     {
-      "id": "item-cute-ava-rin-dragon-boat-festival-handmade-zongzi-01",
+      "id": "item-xxy-cute-dragon-boat-festival-handmade-zongzi-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
+      "seriesId": "series-xxy-cute",
       "title": "Dragon Boat Festival Handmade Zongzi 01",
       "displayText": "Dragon Boat Festival Handmade Zongzi 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Dragon_Boat_Festival_Handmade_Zongzi_01.png",
-      "notes": "Cute Ava_Rin Series: Dragon Boat Festival Handmade Zongzi 01."
+      "image": "/images/line-stickers/小小源系列/Dragon_Boat_Festival_Handmade_Zongzi_01.png",
+      "notes": "小小源系列: Dragon Boat Festival Handmade Zongzi 01."
     },
     {
-      "id": "item-cute-ava-rin-black-jacket-pose-01",
+      "id": "item-xxy-cute-black-jacket-pose-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
-      "title": "Ava Rin Black Jacket Pose 01",
-      "displayText": "Ava Rin Black Jacket Pose 01",
+      "seriesId": "series-xxy-cute",
+      "title": "小小源 Black Jacket Pose 01",
+      "displayText": "小小源 Black Jacket Pose 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Black_Jacket_Pose_01.png",
-      "notes": "Cute Ava_Rin Series: Ava Rin Black Jacket Pose 01."
+      "image": "/images/line-stickers/小小源系列/小小源_Black_Jacket_Pose_01.png",
+      "notes": "小小源系列: 小小源 Black Jacket Pose 01."
     },
     {
-      "id": "item-cute-ava-rin-cozy-reading-corner-01",
+      "id": "item-xxy-cute-cozy-reading-corner-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
-      "title": "Ava Rin Cozy Reading Corner 01",
-      "displayText": "Ava Rin Cozy Reading Corner 01",
+      "seriesId": "series-xxy-cute",
+      "title": "小小源 Cozy Reading Corner 01",
+      "displayText": "小小源 Cozy Reading Corner 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Cozy_Reading_Corner_01.png",
-      "notes": "Cute Ava_Rin Series: Ava Rin Cozy Reading Corner 01."
+      "image": "/images/line-stickers/小小源系列/小小源_Cozy_Reading_Corner_01.png",
+      "notes": "小小源系列: 小小源 Cozy Reading Corner 01."
     },
     {
-      "id": "item-cute-ava-rin-happy-smile-01",
+      "id": "item-xxy-cute-happy-smile-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
-      "title": "Ava Rin Happy Smile 01",
-      "displayText": "Ava Rin Happy Smile 01",
+      "seriesId": "series-xxy-cute",
+      "title": "小小源 Happy Smile 01",
+      "displayText": "小小源 Happy Smile 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Happy_Smile_01.png",
-      "notes": "Cute Ava_Rin Series: Ava Rin Happy Smile 01."
+      "image": "/images/line-stickers/小小源系列/小小源_Happy_Smile_01.png",
+      "notes": "小小源系列: 小小源 Happy Smile 01."
     },
     {
-      "id": "item-cute-ava-rin-microphone-smile-01",
+      "id": "item-xxy-cute-microphone-smile-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
-      "title": "Ava Rin Microphone Smile 01",
-      "displayText": "Ava Rin Microphone Smile 01",
+      "seriesId": "series-xxy-cute",
+      "title": "小小源 Microphone Smile 01",
+      "displayText": "小小源 Microphone Smile 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Microphone_Smile_01.png",
-      "notes": "Cute Ava_Rin Series: Ava Rin Microphone Smile 01."
+      "image": "/images/line-stickers/小小源系列/小小源_Microphone_Smile_01.png",
+      "notes": "小小源系列: 小小源 Microphone Smile 01."
     },
     {
-      "id": "item-cute-ava-rin-music-smile-01",
+      "id": "item-xxy-cute-music-smile-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
-      "title": "Ava Rin Music Smile 01",
-      "displayText": "Ava Rin Music Smile 01",
+      "seriesId": "series-xxy-cute",
+      "title": "小小源 Music Smile 01",
+      "displayText": "小小源 Music Smile 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Ava_Rin_Music_Smile_01.png",
-      "notes": "Cute Ava_Rin Series: Ava Rin Music Smile 01."
+      "image": "/images/line-stickers/小小源系列/小小源_Music_Smile_01.png",
+      "notes": "小小源系列: 小小源 Music Smile 01."
     },
     {
-      "id": "item-cute-ava-rin-basketball-layup-01",
+      "id": "item-xxy-cute-basketball-layup-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
-      "title": "Basketball Layup Ava Rin 01",
-      "displayText": "Basketball Layup Ava Rin 01",
+      "seriesId": "series-xxy-cute",
+      "title": "Basketball Layup 小小源 01",
+      "displayText": "Basketball Layup 小小源 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Basketball_Layup_Ava_Rin_01.png",
-      "notes": "Cute Ava_Rin Series: Basketball Layup Ava Rin 01."
+      "image": "/images/line-stickers/小小源系列/Basketball_Layup_小小源_01.png",
+      "notes": "小小源系列: Basketball Layup 小小源 01."
     },
     {
-      "id": "item-cute-ava-rin-basketball-layup-inside-paint-01",
+      "id": "item-xxy-cute-basketball-layup-inside-paint-01",
       "categoryId": "cat-line",
-      "seriesId": "series-cute-ava-rin-series",
+      "seriesId": "series-xxy-cute",
       "title": "Basketball Layup Inside Paint 01",
       "displayText": "Basketball Layup Inside Paint 01",
       "status": "完成",
-      "image": "/images/line-stickers/Cute Ava_Rin Series/Basketball_Layup_Inside_Paint_01.png",
-      "notes": "Cute Ava_Rin Series: Basketball Layup Inside Paint 01."
+      "image": "/images/line-stickers/小小源系列/Basketball_Layup_Inside_Paint_01.png",
+      "notes": "小小源系列: Basketball Layup Inside Paint 01."
     },
     {
       "id": "item-furin-chan-windbell-chan-character-reference-01",

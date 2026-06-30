@@ -11,7 +11,7 @@ const publicImagesRoot = path.join(projectRoot, "public", "images");
 const fallbackFolder = path.join(
   publicImagesRoot,
   "line-stickers",
-  "ava-rin-work-1"
+  "xxy-work-1"
 );
 
 const allowedExts = [".png", ".jpg", ".jpeg", ".webp", ".gif"];
@@ -41,15 +41,15 @@ function buildDefaultSourceData() {
         id: "cat-line",
         name: "LINE 貼圖",
         slug: "line-stickers",
-        description: "Ava_凜 LINE 貼圖系列，依照系列整理單張貼圖。",
+        description: "小小源 LINE 貼圖系列，依照系列整理單張貼圖。",
       },
     ],
     series: [
       {
         id: "series-work-1",
         categoryId: "cat-line",
-        name: "Ava_凜 工作篇 1",
-        slug: "ava-rin-work-1",
+        name: "小小源 工作篇 1",
+        slug: "xxy-work-1",
         description:
           "工作情境貼圖，包含加班中、開工啦、收到、馬上處理、會議中、下班啦。",
       },
@@ -58,14 +58,14 @@ function buildDefaultSourceData() {
       const title = fileTitle(file);
 
       return {
-        id: `ava-rin-work-1-${String(index + 1).padStart(3, "0")}`,
+        id: `xxy-work-1-${String(index + 1).padStart(3, "0")}`,
         categoryId: "cat-line",
         seriesId: "series-work-1",
         title,
         displayText: title,
         status: "完成",
-        image: `/images/line-stickers/ava-rin-work-1/${file}`,
-        notes: "Ava_凜 工作篇 1。",
+        image: `/images/line-stickers/xxy-work-1/${file}`,
+        notes: "小小源 工作篇 1。",
       };
     }),
   };
